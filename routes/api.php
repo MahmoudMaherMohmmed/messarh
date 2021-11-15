@@ -23,6 +23,7 @@ Route::post('login', 'Api\LoginController@login');
 Route::post('register', 'Api\LoginController@register');
 
 Route::get('specialties', 'Api\SpecialtyController@index');
+Route::get('specialty/{id}', 'Api\SpecialtyController@specialty');
 
 Route::middleware('auth:api')->group(function () {
     
