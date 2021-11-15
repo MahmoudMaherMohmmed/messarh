@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 use App\Http\Repository\LanguageRepository;
-use App\Http\Services\uploaderService;
+use App\Http\Services\UploaderService;
 use Illuminate\Http\UploadedFile;
 
 use Validator;
