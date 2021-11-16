@@ -411,7 +411,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
                     @endif
 
-                    @if (get_action_icons('doctor', 'get'))
+                    <!-- @if (get_action_icons('doctor', 'get')) -->
                     <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
@@ -427,7 +427,27 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    @endif
+                    <!-- @endif -->
+                </ul>
+                <!-- END Navlist -->
+
+                <!-- @if (get_action_icons('client', 'get')) -->
+                <ul class="nav nav-list">
+                        <li id="doctor">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@lang('messages.clients.clients')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="client_index"><a href="{{url('client')}}">@lang('messages.clients.clients')</a></li>
+                                <li id="client_create"><a href="{{url('client/create')}}">@lang('messages.clients.create_client')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- @endif -->
                 </ul>
                 <!-- END Navlist -->
 

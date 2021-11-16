@@ -207,6 +207,7 @@ return [
         'mobile_number' => 'رقم الهاتف',
         'email' => 'البريد الالكترومى',
         'password' => 'كلمة المرور',
+        'confirm_password' => 'تاكيد كلمة المرور',
         'active' => 'نشط',
         'timezone' => 'التوقيت العالمى',
         'currency' => 'ألعمله',
@@ -347,5 +348,10 @@ return [
         'create_doctor' => 'اضافة معالج جديد',
         'graduation_university' => 'جامعة التخرج',
         'subspecialty' => 'التخصص الفرعى',
+    ],
+
+    'clients'=>[
+        'clients' => 'عملاء التطبيق',
+        'create_doctor' => 'اضافة عميل جديد',
     ]
 ];

@@ -214,6 +214,7 @@ return [
         'mobile_number' => 'Mobile Number',
         'email' => 'Email',
         'password' => 'Password',
+        'confirm_password' => 'Confirm Password',
         'active' => 'Active',
         'timezone' => 'TimeZone',
         'currency' => 'Currency',
@@ -353,5 +354,10 @@ return [
         'create_doctor' => 'Add New Doctor',
         'graduation_university' => 'Graduation University',
         'subspecialty' => 'Subspecialty',
+    ],
+
+    'clients'=>[
+        'clients' => 'Clients',
+        'create_client' => 'Add New Client',
     ]
 ];
