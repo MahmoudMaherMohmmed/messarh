@@ -23,7 +23,7 @@ class ClientController extends Controller
         $client = Client::where('phone', $request->phone)->first();
         if ($client) {
             if (Hash::check($request->password, $client->password)) {
-                $token = $client->createToken('Laravel Password Grant Client')->accessToken;
+                $token = $client->createToken('API')->accessToken;
                 $response = ['token' => $token];
                 return response($response, 200);
             } else {
@@ -50,7 +50,7 @@ class ClientController extends Controller
 
         $client = Client::create($request->only('name', 'email', 'password', 'phone'));
 
-        $token = $client->createToken('TutsForApi')->accessToken;
+        $token = $client->createToken('API')->accessToken;
 
         return response()->json(['token' => $token], 200);
     }
