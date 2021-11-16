@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::post('login', 'Api\LoginController@login');
-Route::post('register', 'Api\LoginController@register');
+Route::post('login', 'Api\ClientController@login');
+Route::post('register', 'Api\ClientController@register');
 
 Route::get('specialties', 'Api\SpecialtyController@index');
 Route::get('specialty/{id}', 'Api\SpecialtyController@specialty');

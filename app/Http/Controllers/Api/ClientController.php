@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class ClientController extends Controller
 {
     public function login(Request $request)
     {
@@ -19,11 +20,19 @@ class LoginController extends Controller
         if($Validated->fails())
             return response()->json($Validated->messages());
 
-        if (auth()->attempt($request->only('phone', 'password'))) {
-            $token = auth()->user()->createToken('TutsForApi')->accessToken;
-            return response()->json(['token' => $token], 200);
+        $client = Client::where('phone', $request->phone)->first();
+        if ($client) {
+            if (Hash::check($request->password, $client->password)) {
+                $token = $client->createToken('Laravel Password Grant Client')->accessToken;
+                $response = ['token' => $token];
+                return response($response, 200);
+            } else {
+                $response = ["message" => "Password mismatch"];
+                return response($response, 401);
+            }
         } else {
-            return response()->json(['error' => 'UnAuthorised'], 401);
+            $response = ["message" =>'User does not exist'];
+            return response($response, 401);
         }
     }
 
