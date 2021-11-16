@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'ألرسائل النصيه',
+    'name' => 'الاسم',
     'language' => 'english',
     'role' => 'الادوار',
     'create-role' => 'انشاء دور',
@@ -339,5 +340,12 @@ return [
     'specialties'=>[
         'specialties' => 'التخصصات',
         'create_specialty' => 'اضافة تخصص جديد',
+    ],
+
+    'doctors'=>[
+        'doctors' => 'المعالجين',
+        'create_doctor' => 'اضافة معالج جديد',
+        'graduation_university' => 'جامعة التخرج',
+        'subspecialty' => 'التخصص الفرعى',
     ]
 ];

@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'SMS',
+    'name' => 'Name',
     'language' => 'عربي',
     'role' => 'Role',
     'create-role' => 'Create Role',
@@ -345,5 +346,12 @@ return [
     'specialties'=>[
         'specialties' => 'Specialties',
         'create_specialty' => 'Create Specialty',
+    ],
+
+    'doctors'=>[
+        'doctors' => 'Doctors',
+        'create_doctor' => 'Add New Doctor',
+        'graduation_university' => 'Graduation University',
+        'subspecialty' => 'Subspecialty',
     ]
 ];

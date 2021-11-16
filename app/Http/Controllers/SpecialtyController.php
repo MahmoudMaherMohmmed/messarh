@@ -74,6 +74,9 @@ class SpecialtyController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
+        $specialty = new Specialty();
+        $specialty->fill($request->except('title', 'description', 'ímage'));
+
         if ($request->image) {
             $imgExtensions = array("png", "jpeg", "jpg");
             $file = $request->image;
@@ -82,13 +85,9 @@ class SpecialtyController extends Controller
                 return back();
             }
 
-            $request = array_merge($request, [
-                'image' => $this->handleFile($request['image'])
-            ]);
+            $specialty->image = $this->handleFile($request['image']);
         }
 
-        $specialty = new Specialty();
-        $specialty->fill($request->except('title', 'description', 'ímage'));
         foreach ($request->title as $key => $value) {
             $specialty->setTranslation('title', $key, $value);
         }
@@ -96,8 +95,6 @@ class SpecialtyController extends Controller
         foreach ($request->description as $key => $value) {
             $specialty->setTranslation('description', $key, $value);
         }
-
-        $specialty->image = $this->handleFile($request['image']);
         
         $specialty->save();
         \Session::flash('success', trans('messages.Added Successfully'));
@@ -151,6 +148,7 @@ class SpecialtyController extends Controller
         }
 
         $specialty = Specialty::findOrFail($id);
+        $specialty->fill($request->except('title, description', 'ímage'));
 
         if ($request->image) {
             $imgExtensions = array("png", "jpeg", "jpg");
@@ -161,19 +159,18 @@ class SpecialtyController extends Controller
             }
 
             if ($specialty->image) {
-                $this->delete_image_if_exists(base_path('/uploads/specialty/' . basename($specialty->image)));
+                $this->delete_image_if_exists(base_path('/uploads/specialties/' . basename($specialty->image)));
             }
+
+            $specialty->image = $this->handleFile($request['image']);
         }
 
-        $specialty->fill($request->except('title, description', 'ímage'));
         foreach ($request->title as $key => $value) {
             $specialty->setTranslation('title', $key, $value);
         }
         foreach ($request->description as $key => $value) {
             $specialty->setTranslation('description', $key, $value);
         }
-
-        $specialty->image = $this->handleFile($request['image']);
         
         $specialty->save();
 

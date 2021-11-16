@@ -410,6 +410,24 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         </li>
                     </ul>
                     @endif
+
+                    @if (get_action_icons('doctor', 'get'))
+                    <ul class="nav nav-list">
+                        <li id="doctor">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@lang('messages.doctors.doctors')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="doctor_index"><a href="{{url('doctor')}}">@lang('messages.doctors.doctors')</a></li>
+                                <li id="doctor_create"><a href="{{url('doctor/create')}}">@lang('messages.doctors.create_doctor')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    @endif
                 </ul>
                 <!-- END Navlist -->
 

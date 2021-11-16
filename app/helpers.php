@@ -90,6 +90,7 @@ function get_static_routes()
         Route::post('admin/migrate_tables', 'DashboardController@migrate_tables');
 
         Route::Resource('specialty', 'SpecialtyController');
+        Route::Resource('doctor', 'DoctorController');
 
         // Route::get('content/allData', 'ContentController@allData');
         // Route::get('category/allData', 'CategoryController@allData');
