@@ -38,11 +38,13 @@ class AppointmentController extends Controller
                     if(count($days)==7 && $month_start_date->diff($day)->days==7){
                         $months[$day->format('Y M')] = $days;
                         $days = [];
-                    }else{
+                    }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
                         $days[$day->format('D')] = [];
                     }
                 }
             }
+
+            dd($months);
         }
 
         dd($appointments_array);
