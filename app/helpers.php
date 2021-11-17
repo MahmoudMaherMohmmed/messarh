@@ -92,6 +92,7 @@ function get_static_routes()
         Route::Resource('specialty', 'SpecialtyController');
         Route::Resource('doctor', 'DoctorController');
         Route::Resource('client', 'ClientController');
+        Route::Resource('appointment', 'AppointmentController');
 
         // Route::get('content/allData', 'ContentController@allData');
         // Route::get('category/allData', 'CategoryController@allData');
