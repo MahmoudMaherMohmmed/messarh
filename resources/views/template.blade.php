@@ -393,7 +393,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
                     @endif
 
-                    @if (get_action_icons('specialty', 'get'))
                     <ul class="nav nav-list">
                         <li id="specialty">
                             <a href="#" class="dropdown-toggle">
@@ -409,9 +408,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    @endif
 
-                    <!-- @if (get_action_icons('doctor', 'get')) -->
                     <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
@@ -427,12 +424,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    <!-- @endif -->
-                </ul>
-                <!-- END Navlist -->
 
-                <!-- @if (get_action_icons('client', 'get')) -->
-                <ul class="nav nav-list">
+                    <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
                                 <i class="glyphicon glyphicon-user"></i>
@@ -447,7 +440,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    <!-- @endif -->
                 </ul>
                 <!-- END Navlist -->
 
@@ -481,7 +473,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                 @yield('content')
             </div>
             <div class="footer" align="center" style=" position: absolute; width: 100%; bottom: 0;">
-                <p>{{\Carbon\Carbon::now()->year}} © iVAS Template</p>
+                <p>{{\Carbon\Carbon::now()->year}} © Massara</p>
             </div>
             <a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>
         </div>

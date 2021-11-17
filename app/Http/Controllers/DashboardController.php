@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Specialty;
+use App\Models\Doctor;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,8 +33,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = count(User::all());
-        return view('dashboard.index', compact('users'));
+        $users = User::count();
+        $specialties = Specialty::count();
+        $doctors = Doctor::count();
+        $clients = Client::count();
+        return view('dashboard.index', compact('users', 'specialties', 'doctors', 'clients'));
     }
 
     /**
