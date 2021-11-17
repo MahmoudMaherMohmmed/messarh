@@ -45,9 +45,9 @@ class AppointmentController extends Controller
                     }
                 }
             }
-        }
 
-        $appointments_array = $months;
+            $appointments_array = $months;
+        }
 
         return $appointments_array;
     }
