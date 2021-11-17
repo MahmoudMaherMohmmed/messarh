@@ -14,9 +14,7 @@ class AppointmentController extends Controller
 
         $appointments = Appointment::where('doctor_id', $doctor_id)->where('status', 0)->get(['date', 'from', 'to']);
 
-        $this->formateDoctorAppointments($appointments);
-
-        return response()->json(['appointments' => $appointments], 200);
+        return response()->json(['appointments' => $this->formateDoctorAppointments($appointments)], 200);
     }
 
     private function formateDoctorAppointments($appointments){
@@ -34,20 +32,23 @@ class AppointmentController extends Controller
                     $month_start_date = $day;
                     $months[$day->format('Y M')] = [];
                     $days[$day->format('D')] = [];
+                    $this->setMonthDaysArrayValues($days, $day, $appointments);
                 }else{
-                    if(count($days)==7 && $month_start_date->diff($day)->days==7){
-                        $months[$day->format('Y M')] = $days;
-                        $days = [];
+                    if(($month_start_date->diff($day)->days)+1 == $day->daysInMonth){
+                        array_push($months[$day->format('Y M')], $days);
+                        unset($days);
                     }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
                         $days[$day->format('D')] = [];
+                        $this->setMonthDaysArrayValues($days, $day, $appointments);
+                    }else{
+                        $this->setMonthDaysArrayValues($days, $day, $appointments);
                     }
                 }
             }
-
-            dd($months);
         }
 
-        dd($appointments_array);
+        $appointments_array = $months;
+
         return $appointments_array;
     }
 
@@ -58,5 +59,25 @@ class AppointmentController extends Controller
         $available_appointment_duration = CarbonPeriod::create($current_month, $last_avaliable_duration);
 
         return $available_appointment_duration;
+    }
+
+    private function setMonthDaysArrayValues(&$days, $day, $appointments){
+        if($this->checkAppointmentDay($day, $appointments)){
+            array_push($days[$day->format('D')], [$day->format('d')=>1]);
+        }else{
+            array_push($days[$day->format('D')], [$day->format('d')=>0]);
+        }
+
+        return true;
+    }
+
+    private function checkAppointmentDay($day, $appointments){
+        foreach($appointments as $appointment){
+            if($appointment->date == $day->format('Y-m-d')){
+                return true;
+            }
+        }
+
+        return false;
     }
 }
