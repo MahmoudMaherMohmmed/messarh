@@ -7,9 +7,21 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Services\UploaderService;
+use Illuminate\Http\UploadedFile;
 
 class ClientController extends Controller
 {
+    /**
+     * @var IMAGE_PATH
+     */
+    const IMAGE_PATH = 'clients';
+    
+    public function __construct(UploaderService $uploaderService)
+    {
+        $this->uploaderService = $uploaderService;
+    }
+
     public function login(Request $request)
     {
         $Validated = Validator::make($request->all(), [
@@ -61,7 +73,7 @@ class ClientController extends Controller
         return response()->json(['user' => $user], 200);
     }
 
-    public function UpdateProfile(Request $request){
+    public function updateProfile(Request $request){
         $client = $request->user();
 
         $Validated = Validator::make($request->all(), [
@@ -78,5 +90,34 @@ class ClientController extends Controller
         $updated_client->update();
         
         return response()->json(['messaage' => 'Your profile updated successfully.'], 200);
+    }
+
+    public function updateProfileImage(Request $request){
+        $client = $request->user();
+
+        $Validated = Validator::make($request->all(), [
+            'image'      => 'required|mimes:jpeg,jpg,png',
+        ]);
+
+        if($Validated->fails())
+            return response()->json($Validated->messages());
+
+        $updated_client = Client::where('id', $client->id)->first();
+        if ($request->image) {
+            $updated_client->image = $this->handleFile($request['image']);
+        }
+        $updated_client->update();
+
+        return response()->json(['messaage' => 'Your profile updated successfully.'], 200);
+    }
+
+       /**
+     * handle image file that return file path
+     * @param File $file
+     * @return string
+     */
+    public function handleFile(UploadedFile $file)
+    {
+        return $this->uploaderService->upload($file, self::IMAGE_PATH);
     }
 }
