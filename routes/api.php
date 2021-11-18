@@ -28,4 +28,5 @@ Route::get('specialty/{id}', 'Api\SpecialtyController@specialty');
 Route::middleware('auth:api')->group(function () {
     Route::get('appointments/{doctor_id}', 'Api\AppointmentController@doctorAppointments');
     Route::post('day_appointments', 'Api\AppointmentController@dayAppointments');
+    route::post('appointment/reserve', 'Api\AppointmentController@reserveAppointment');
 });

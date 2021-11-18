@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
@@ -87,5 +89,37 @@ class AppointmentController extends Controller
 
     private function formatDate($date){
         return Carbon::createFromFormat('Y M d', $date)->format('Y-m-d');
+    }
+
+    public function reserveAppointment(Request $request){
+        $Validated = Validator::make($request->all(), [
+            'client_id' => 'required',
+            'appointment_id' => 'required',
+            'patient_name' => 'required|min:3',
+            'phone_number' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'description' => 'required',
+        ]);
+
+        if($Validated->fails())
+            return response()->json($Validated->messages());
+
+        $reservation = new Reservation();
+        $reservation->fill($request->only('client_id', 'appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description'));
+        if($reservation->save()){
+            $this->updateAppointmentStatus($request->appointment_id);
+            return response()->json(['message' => 'appointment reserved successfully.'], 200);
+        }else{
+            return response()->json(['message' => 'an error occurred.'], 200);
+        }  
+    }
+
+    private function updateAppointmentStatus($appointment_id){
+        $appointment = Appointment::where('id', $appointment_id)->first();
+        $appointment->status = 1;
+        $appointment->save();
+
+        return true;
     }
 }
