@@ -25,8 +25,7 @@ Route::post('register', 'Api\ClientController@register');
 Route::get('specialties', 'Api\SpecialtyController@index');
 Route::get('specialty/{id}', 'Api\SpecialtyController@specialty');
 
-Route::get('appointments/{doctor_id}', 'Api\AppointmentController@doctorAppointments');
-
 Route::middleware('auth:api')->group(function () {
-    
+    Route::get('appointments/{doctor_id}', 'Api\AppointmentController@doctorAppointments');
+    Route::post('day_appointments', 'Api\AppointmentController@dayAppointments');
 });

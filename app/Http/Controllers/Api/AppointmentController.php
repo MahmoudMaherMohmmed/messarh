@@ -18,38 +18,32 @@ class AppointmentController extends Controller
     }
 
     private function formateDoctorAppointments($appointments){
-        $appointments_array = [];
+        $months = [];
+        $days = [];
 
-        if(isset($appointments) && count($appointments)>0){
-            $months = [];
-            $days = [];
+        $available_appointment_duration = $this->getAppointmentAvaliableDuration();
 
-            $available_appointment_duration = $this->getAppointmentAvaliableDuration();
-
-            $month_start_date = null;
-            foreach($available_appointment_duration as $day){
-                if(!isset($months[$day->format('Y M')])){
-                    $month_start_date = $day;
-                    $months[$day->format('Y M')] = [];
+        $month_start_date = null;
+        foreach($available_appointment_duration as $day){
+            if(!isset($months[$day->format('Y M')])){
+                $month_start_date = $day;
+                $months[$day->format('Y M')] = [];
+                $days[$day->format('D')] = [];
+                $this->setMonthDaysArrayValues($days, $day, $appointments);
+            }else{
+                if(($month_start_date->diff($day)->days)+1 == $day->daysInMonth){
+                    array_push($months[$day->format('Y M')], $days);
+                    unset($days);
+                }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
                     $days[$day->format('D')] = [];
                     $this->setMonthDaysArrayValues($days, $day, $appointments);
                 }else{
-                    if(($month_start_date->diff($day)->days)+1 == $day->daysInMonth){
-                        array_push($months[$day->format('Y M')], $days);
-                        unset($days);
-                    }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
-                        $days[$day->format('D')] = [];
-                        $this->setMonthDaysArrayValues($days, $day, $appointments);
-                    }else{
-                        $this->setMonthDaysArrayValues($days, $day, $appointments);
-                    }
+                    $this->setMonthDaysArrayValues($days, $day, $appointments);
                 }
             }
-
-            $appointments_array = $months;
         }
 
-        return $appointments_array;
+        return $months;
     }
 
     private function getAppointmentAvaliableDuration(){
@@ -79,5 +73,19 @@ class AppointmentController extends Controller
         }
 
         return false;
+    }
+
+    public function dayAppointments(Request $request){
+        $appointments = [];
+
+        if(isset($request->date) && $request->date!=null){
+            $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->get(['id', 'from', 'to', 'status']);
+        }
+
+        return response()->json(['appointments' => $appointments], 200);
+    }
+
+    private function formatDate($date){
+        return Carbon::createFromFormat('Y M d', $date)->format('Y-m-d');
     }
 }
