@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\UserHasRoles', 'user_id', 'id');
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
