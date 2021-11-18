@@ -54,4 +54,29 @@ class ClientController extends Controller
 
         return response()->json(['token' => $token], 200);
     }
+
+    public function profile(Request $request){
+        $user = $request->user();
+
+        return response()->json(['user' => $user], 200);
+    }
+
+    public function UpdateProfile(Request $request){
+        $client = $request->user();
+
+        $Validated = Validator::make($request->all(), [
+            'name'      => 'required|min:3',
+            'email'     => 'required|unique:clients,email,'.$client->email,
+            'phone'     => 'required|unique:clients,phone,'.$client->phone,
+        ]);
+
+        if($Validated->fails())
+            return response()->json($Validated->messages());
+
+        $updated_client = Client::where('id', $client->id)->first();
+        $updated_client->fill($request->only('name', 'email', 'phone'));
+        $updated_client->update();
+        
+        return response()->json(['messaage' => 'Your profile updated successfully.'], 200);
+    }
 }
