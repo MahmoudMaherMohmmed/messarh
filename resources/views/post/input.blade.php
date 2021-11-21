@@ -32,7 +32,7 @@
     <div class="col-sm-9 col-lg-10 controls">
         {!! Form::text('published_date',null,['placeholder'=>'published_date','class'=>'form-control js-datepicker' ,'value' => 'date("Y-m-d")' , 'autocomplete' => 'off' ]) !!}
     </div>
-</div>
+</div> 
 
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.Status')<span class="text-danger">*</span></label>

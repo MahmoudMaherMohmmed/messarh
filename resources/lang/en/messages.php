@@ -354,6 +354,8 @@ return [
         'create_doctor' => 'Add New Doctor',
         'graduation_university' => 'Graduation University',
         'subspecialty' => 'Subspecialty',
+        'specialty' => 'Specialty',
+        'medical_examination_price' => 'Medical Examination Price',
     ],
 
     'clients'=>[

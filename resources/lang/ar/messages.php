@@ -348,6 +348,8 @@ return [
         'create_doctor' => 'اضافة معالج جديد',
         'graduation_university' => 'جامعة التخرج',
         'subspecialty' => 'التخصص الفرعى',
+        'specialty' => 'التخصص',
+        'medical_examination_price' => 'سعر الكشف',
     ],
 
     'clients'=>[

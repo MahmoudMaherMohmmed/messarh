@@ -11,7 +11,7 @@ class Doctor extends Model
     use Translatable, HasFactory;
 
     protected $table = 'doctors';
-    protected $fillable = ['name', 'image', 'subspecialty', 'graduation_university'];
+    protected $fillable = ['name', 'image', 'subspecialty', 'medical_examination_price', 'graduation_university'];
 
     public function specialty()
     {
