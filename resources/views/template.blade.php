@@ -440,6 +440,22 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="center">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@lang('messages.general_settings')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="center_index"><a href="{{url('center')}}">@lang('messages.centers.centers')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </ul>
                 <!-- END Navlist -->
 

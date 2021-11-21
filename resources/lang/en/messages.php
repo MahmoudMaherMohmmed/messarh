@@ -28,6 +28,7 @@ return [
     'save' => 'Save',
     'cancel' => 'Cancel',
     'description' => 'Description',
+    'general_settings' => 'Genteral Settings',
     'roles' => [
         'edit-role' => 'Edit Role',
         'role-name' => 'Role name',
@@ -361,5 +362,13 @@ return [
     'clients'=>[
         'clients' => 'Clients',
         'create_client' => 'Add New Client',
+    ],
+
+    'centers'=>[
+        'centers' => 'Centers',
+        'create_center' => 'Add New Center',
+        'emails' => 'Emails',
+        'email' => 'Email',
+        'contact_email' => 'Contact Email',
     ]
 ];

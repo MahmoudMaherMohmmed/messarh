@@ -28,6 +28,7 @@ return [
     'save' => 'حفظ',
     'cancel' => 'ألغاء',
     'description' => 'الوصف',
+    'general_settings' => 'اعدادات عامه',
     'roles' => [
         'edit-role' => 'تعديل الدور',
         'role-name' => 'أسم الدور',
@@ -354,6 +355,14 @@ return [
 
     'clients'=>[
         'clients' => 'عملاء التطبيق',
-        'create_doctor' => 'اضافة عميل جديد',
+        'create_client' => 'اضافة عميل جديد',
+    ],
+
+    'centers'=>[
+        'centers' => 'المراكز',
+        'create_center' => 'اضافة مركز جديد',
+        'emails' => 'ايميلات',
+        'email' => 'ايميل',
+        'contact_email' => 'ايميل الاتصال',
     ]
 ];
