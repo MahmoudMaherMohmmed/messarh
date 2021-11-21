@@ -30,7 +30,7 @@ class ClientController extends Controller
         ]);
 
         if($Validated->fails())
-            return response()->json($Validated->messages());
+            return response()->json($Validated->messages(), 403);
 
         $client = Client::where('phone', $request->phone)->first();
         if ($client) {
@@ -40,11 +40,11 @@ class ClientController extends Controller
                 return response($response, 200);
             } else {
                 $response = ["message" => "Password mismatch"];
-                return response($response, 401);
+                return response($response, 403);
             }
         } else {
             $response = ["message" =>'User does not exist'];
-            return response($response, 401);
+            return response($response, 403);
         }
     }
 
@@ -58,7 +58,7 @@ class ClientController extends Controller
         ]);
 
         if($Validated->fails())
-            return response()->json($Validated->messages());
+            return response()->json($Validated->messages(), 403);
 
         $client = Client::create($request->only('name', 'email', 'password', 'phone'));
 
@@ -83,7 +83,7 @@ class ClientController extends Controller
         ]);
 
         if($Validated->fails())
-            return response()->json($Validated->messages());
+            return response()->json($Validated->messages(), 403);
 
         $updated_client = Client::where('id', $client->id)->first();
         $updated_client->fill($request->only('name', 'email', 'phone'));
@@ -100,7 +100,7 @@ class ClientController extends Controller
         ]);
 
         if($Validated->fails())
-            return response()->json($Validated->messages());
+            return response()->json($Validated->messages(), 403);
 
         $updated_client = Client::where('id', $client->id)->first();
         if ($request->image) {
