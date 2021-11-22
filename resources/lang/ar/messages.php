@@ -379,5 +379,9 @@ return [
     'massara'=>[
         'massara_about' => 'عن مسرة',
         'create_massara' => 'تعديل مسرة',
-    ]
+    ],
+
+    'terms_conditions'=>[
+        'terms_conditions' => 'الشروط والاحكام',
+    ],
 ];

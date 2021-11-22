@@ -386,5 +386,10 @@ return [
         'massara_about' => 'About Massara',
         'create_massara' => 'Massara Create',
     ],
+
+    'terms_conditions'=>[
+        'terms_conditions' => 'Terms And Conditions',
+        'terms_conditions_update' => 'Update Terms Conditions',
+    ],
     
 ];
