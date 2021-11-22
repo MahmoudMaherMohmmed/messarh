@@ -373,6 +373,11 @@ return [
         'phones' => 'Phones',
         'phone_1' => 'Phone 1',
         'phone_2' => 'Phone 2',
+        'social_links' => 'Social Links', 
+        'facebook_link' => 'Facebook Link',
+        'whatsapp_link' => 'Whatsapp Link',
+        'instagram_link' => 'Instagram Link',
+        'location' => 'Location',
         'lat' => 'Lat',
         'lng' => 'Lng',
     ],
@@ -381,9 +386,5 @@ return [
         'massara_about' => 'About Massara',
         'create_massara' => 'Massara Create',
     ],
-
-    'social_links'=>[
-        'social_links' => 'Social Links',
-        'create_social_link' => 'Add New Social Link',
-    ]
+    
 ];

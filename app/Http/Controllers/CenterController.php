@@ -69,6 +69,9 @@ class CenterController extends Controller
             'contact_email' => 'required|email',
             'phone_1' => 'required',
             'phone_2' => 'required',
+            'facebook_link' => 'required',
+            'whatsapp_link' => 'required',
+            'instagram_link' => 'required',
             'lat' => 'required',
             'lng' => 'required',
             'logo' => ''
@@ -142,6 +145,9 @@ class CenterController extends Controller
             'contact_email' => 'required|email',
             'phone_1' => 'required',
             'phone_2' => 'required',
+            'facebook_link' => 'required',
+            'whatsapp_link' => 'required',
+            'instagram_link' => 'required',
             'lat' => 'required',
             'lng' => 'required',
             'logo' => ''

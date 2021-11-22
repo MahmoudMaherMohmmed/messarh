@@ -49,6 +49,19 @@
 </div> 
 
 <div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.centers.social_links') <span class="text-danger">*</span></label>
+    <div class="col-sm-3 col-lg-3 controls">
+        <input type="url" class="form-control" name="facebook_link" placeholder="@lang('messages.centers.facebook_link')" value="@if ($center) {!! $center->facebook_link !!} @endif" />
+    </div>
+    <div class="col-sm-3 col-lg-3 controls">
+        <input type="url" class="form-control" name="whatsapp_link" placeholder="@lang('messages.centers.whatsapp_link')" value="@if ($center) {!! $center->whatsapp_link !!} @endif" />
+    </div>
+    <div class="col-sm-3 col-lg-4 controls">
+        <input type="url" class="form-control" name="instagram_link" placeholder="@lang('messages.centers.instagram_link')" value="@if ($center) {!! $center->instagram_link !!} @endif" />
+    </div>
+</div> 
+
+<div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.centers.location') <span class="text-danger">*</span></label>
     <div class="col-sm-4 col-lg-5 controls">
         <input type="text" class="form-control" name="lat" placeholder="@lang('messages.centers.lat')" value="@if ($center) {!! $center->lat !!} @endif" />

@@ -367,6 +367,11 @@ return [
         'phones' => 'ارقام الهواتف',
         'phone_1' => 'رقم الهاتف الاول',
         'phone_2' => 'رقم الهاتف الثانى',
+        'social_links' => 'الروابط الاجتماعية',
+        'facebook_link' => 'رابط الفيس بوك',
+        'whatsapp_link' => 'رابط الواتس اب',
+        'instagram_link' => 'رابط الانستغرام',
+        'location' => 'الموقع',
         'lat' => 'Lat',
         'lng' => 'Lng',
     ],
@@ -374,10 +379,5 @@ return [
     'massara'=>[
         'massara_about' => 'عن مسرة',
         'create_massara' => 'تعديل مسرة',
-    ],
-
-    'social_links'=>[
-        'social_links' => 'الروابط الاجتماعية',
-        'create_social_link' => 'اضافة رابط اجتماعى جديد',
     ]
 ];

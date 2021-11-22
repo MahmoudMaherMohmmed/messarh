@@ -11,5 +11,5 @@ class Center extends Model
     use Translatable, HasFactory;
 
     protected $table = 'centers';
-    protected $fillable = ['description', 'email', 'contact_email', 'phone_1', 'phone_2', 'lat', 'lng', 'logo'];
+    protected $fillable = ['description', 'email', 'contact_email', 'phone_1', 'phone_2', 'facebook_link', 'whatsapp_link', 'instagram_link', 'lat', 'lng', 'logo'];
 }
