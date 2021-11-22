@@ -373,5 +373,7 @@ return [
         'phones' => 'Phones',
         'phone_1' => 'Phone 1',
         'phone_2' => 'Phone 2',
+        'lat' => 'Lat',
+        'lng' => 'Lng',
     ]
 ];

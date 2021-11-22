@@ -163,7 +163,7 @@ class CenterController extends Controller
             }
 
             if ($center->logo) {
-                $this->delete_image_if_exists(base_path('/uploads/specialties/' . basename($center->logo)));
+                $this->delete_image_if_exists(base_path(basename($center->logo)));
             }
 
             $center->logo = $this->handleFile($request['logo']);

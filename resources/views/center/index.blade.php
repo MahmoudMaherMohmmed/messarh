@@ -35,7 +35,7 @@
                                         <tr>
                                             <th style="width:18px"><input type="checkbox" id="check_all" data-table="{{ $table_name }}"></th>
                                             <th>id</th>
-                                            <th>@lang('messages.Title')</th>
+                                            <th>@lang('messages.Description')</th>
                                             <th>@lang('messages.Image.Image')</th>
                                             <th>@lang('messages.action')</th>
                                         </tr>
@@ -49,14 +49,14 @@
                                                 <td>
                                                     @foreach ($languages as $language)
                                                         <li> <b>{{ $language->title }} :</b>
-                                                            {{ $value->getTranslation('title', $language->short_code) }}</li>
+                                                            {{ $value->getTranslation('description', $language->short_code) }}</li>
                                                     @endforeach
                                                 </td>
 
                                                 <td>
-                                                    @if ($value->image)
+                                                    @if ($value->logo)
                                                         <img class=" img-circle" width="100px" height="100px"
-                                                            src="{{ $value->image }}" />
+                                                            src="{{ url($value->logo) }}" />
                                                     @else
                                                         <img class=" img-circle" width="100px" height="100px"
                                                             src="https://ui-avatars.com/api/?name={{ $value->title }}" />
@@ -69,16 +69,6 @@
                                                             <a class="btn btn-sm show-tooltip"
                                                                 href='{{ url("center/$value->id/edit") }}'
                                                                 title="Edit"><i class="fa fa-edit"></i></a>
-                                                        @endif
-                                                        @if (get_action_icons('center/{id}/delete', 'get'))
-                                                            <form action="{{ route('center.destroy', $value->id) }}"
-                                                                method="POST" style="display: initial;">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                                    style="height: 28px;"><i
-                                                                        class="fa fa-trash"></i></button>
-                                                            </form>
                                                         @endif
                                                     </div>
                                                 </td>

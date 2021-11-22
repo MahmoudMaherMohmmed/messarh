@@ -41,22 +41,21 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.centers.phones') <span class="text-danger">*</span></label>
     <div class="col-sm-4 col-lg-5 controls">
-        <input type="number" class="form-control" name="phone_1" placeholder="@lang('messages.centers.phone_1')" value="@if ($center) {!! $center->phone_1 !!} @endif" />
+        <input type="text" class="form-control" name="phone_1" placeholder="@lang('messages.centers.phone_1')" value="@if ($center) {!! $center->phone_1 !!} @endif" />
     </div>
     <div class="col-sm-5 col-lg-5 controls">
-        <input type="number" class="form-control" name="phone_2" placeholder="@lang('messages.centers.phone_2')" value="@if ($center) {!! $center->phone_2 !!} @endif" />
+        <input type="text" class="form-control" name="phone_2" placeholder="@lang('messages.centers.phone_2')" value="@if ($center) {!! $center->phone_2 !!} @endif" />
     </div>
 </div> 
 
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.centers.location') <span class="text-danger">*</span></label>
     <div class="col-sm-4 col-lg-5 controls">
-        <input type="text" class="form-control" name="lat" value="@if ($center) {!! $center->lat !!} @endif" />
+        <input type="text" class="form-control" name="lat" placeholder="@lang('messages.centers.lat')" value="@if ($center) {!! $center->lat !!} @endif" />
     </div>
     <div class="col-sm-5 col-lg-5 controls">
-        <input type="text" class="form-control" name="lng" value="@if ($center) {!! $center->lng !!} @endif" />
+        <input type="text" class="form-control" name="lng" placeholder="@lang('messages.centers.lng')" value="@if ($center) {!! $center->lng !!} @endif" />
     </div>
-    <div class="col-sm-12 col-lg-12" id="map" style="height: 300px;"></div>
 </div> 
 
 <div class="form-group">
@@ -65,7 +64,7 @@
         <div class="fileupload fileupload-new" data-provides="fileupload">
             <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
                 @if($center)
-                    <img src="{{$center->logo}}" alt="" />
+                    <img src="{{url($center->logo)}}" alt="" />
                 @else
                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                 @endif
