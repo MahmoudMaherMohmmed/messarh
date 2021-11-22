@@ -34,7 +34,7 @@ class AppointmentController extends Controller
                 $this->setMonthDaysArrayValues($days, $day, $appointments);
             }else{
                 if(($month_start_date->diff($day)->days)+1 == $day->daysInMonth){
-                    array_push($months[$day->format('Y M')], $days);
+                    $months[$day->format('Y M')] =  $days;
                     unset($days);
                 }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
                     $days[$day->format('D')] = [];
