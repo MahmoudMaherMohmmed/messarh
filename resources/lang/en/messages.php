@@ -380,5 +380,10 @@ return [
     'massara'=>[
         'massara_about' => 'About Massara',
         'create_massara' => 'Massara Create',
+    ],
+
+    'social_links'=>[
+        'social_links' => 'Social Links',
+        'create_social_link' => 'Add New Social Link',
     ]
 ];

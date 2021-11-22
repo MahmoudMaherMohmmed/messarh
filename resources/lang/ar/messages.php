@@ -374,5 +374,10 @@ return [
     'massara'=>[
         'massara_about' => 'عن مسرة',
         'create_massara' => 'تعديل مسرة',
+    ],
+
+    'social_links'=>[
+        'social_links' => 'الروابط الاجتماعية',
+        'create_social_link' => 'اضافة رابط اجتماعى جديد',
     ]
 ];
