@@ -95,7 +95,6 @@ function get_static_routes()
         Route::Resource('appointment', 'AppointmentController');
         Route::Resource('center', 'CenterController');
         Route::Resource('massara', 'MassaraController');
-        Route::Resource('social_link', 'SocialLinkController');
 
         // Route::get('content/allData', 'ContentController@allData');
         // Route::get('category/allData', 'CategoryController@allData');
