@@ -370,5 +370,8 @@ return [
         'emails' => 'Emails',
         'email' => 'Email',
         'contact_email' => 'Contact Email',
+        'phones' => 'Phones',
+        'phone_1' => 'Phone 1',
+        'phone_2' => 'Phone 2',
     ]
 ];

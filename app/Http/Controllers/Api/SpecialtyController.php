@@ -22,8 +22,10 @@ class SpecialtyController extends Controller
             array_push($specialties_array, [
                 'id' => $specialty->id,
                 'title' => isset($lang) && $lang!=null ? $specialty->getTranslation('title', $lang) : $specialty->title,
+                'description' => isset($lang) && $lang!=null ? $specialty->getTranslation('description', $lang) : $specialty->description,
                 'image' => url($specialty->image),
                 'doctors_count' => $specialty->doctors->count(),
+                'doctors' => $this->formateDoctors($specialty, $lang),
             ]);
         }
 
