@@ -1,6 +1,6 @@
 @extends('template')
 @section('page_title')
-    @lang('messages.centers.centers')
+    @lang('messages.massara.massara_about')
 @stop
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="box box-black">
                         <div class="box-title">
-                            <h3><i class="fa fa-table"></i> @lang('messages.centers.centers')</h3>
+                            <h3><i class="fa fa-table"></i> @lang('messages.massara.massara_about')</h3>
                         </div>
                         <div class="box-content">
                             <div class="btn-toolbar pull-right">
@@ -36,12 +36,11 @@
                                             <th style="width:18px"><input type="checkbox" id="check_all" data-table="{{ $table_name }}"></th>
                                             <th>id</th>
                                             <th>@lang('messages.description')</th>
-                                            <th>@lang('messages.Image.Image')</th>
                                             <th>@lang('messages.action')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($centers as $value)
+                                        @foreach ($massaras as $value)
                                             <tr>
                                                 <td><input type="checkbox" name="selected_rows[]" value="{{ $value->id }}" class="roles select_all_template">
                                                 </td>
@@ -53,15 +52,6 @@
                                                     @endforeach
                                                 </td>
 
-                                                <td>
-                                                    @if ($value->logo)
-                                                        <img class=" img-circle" width="100px" height="100px"
-                                                            src="{{ url($value->logo) }}" />
-                                                    @else
-                                                        <img class=" img-circle" width="100px" height="100px"
-                                                            src="https://ui-avatars.com/api/?name={{ $value->title }}" />
-                                                    @endif
-                                                </td>
                                                 <td class="visible-md visible-xs visible-sm visible-lg">
                                                     <div class="btn-group">
                                                         @if (get_action_icons('center/{id}/edit', 'get'))
@@ -89,7 +79,7 @@
 
 @section('script')
     <script>
-        $('#center').addClass('active');
-        $('#center_index').addClass('active');
+        $('#massara').addClass('active');
+        $('#massara_index').addClass('active');
     </script>
 @stop

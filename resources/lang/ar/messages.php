@@ -369,5 +369,10 @@ return [
         'phone_2' => 'رقم الهاتف الثانى',
         'lat' => 'Lat',
         'lng' => 'Lng',
+    ],
+
+    'massara'=>[
+        'massara_about' => 'عن مسرة',
+        'create_massara' => 'تعديل مسرة',
     ]
 ];

@@ -375,5 +375,10 @@ return [
         'phone_2' => 'Phone 2',
         'lat' => 'Lat',
         'lng' => 'Lng',
+    ],
+
+    'massara'=>[
+        'massara_about' => 'About Massara',
+        'create_massara' => 'Massara Create',
     ]
 ];
