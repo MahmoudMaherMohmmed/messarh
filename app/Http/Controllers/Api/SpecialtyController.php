@@ -44,16 +44,14 @@ class SpecialtyController extends Controller
     }
 
     private function formateSpecialty($specialty, $lang){
-        $specialty_array = [];
-
-        array_push($specialty_array,[
+        $specialty_array = [
             'id' => $specialty->id,
             'title' => isset($lang) && $lang!=null ? $specialty->getTranslation('title', $lang) : $specialty->title,
             'description' => isset($lang) && $lang!=null ? $specialty->getTranslation('description', $lang) : $specialty->description,
             'image' => url($specialty->image),
             'doctors_count' => $specialty->doctors->count(),
             'doctors' => $this->formateDoctors($specialty, $lang),
-        ]);
+        ];
 
         return $specialty_array;
     }
