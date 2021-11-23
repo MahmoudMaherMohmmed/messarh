@@ -93,7 +93,6 @@ class AppointmentController extends Controller
 
     public function reserveAppointment(Request $request){
         $Validated = Validator::make($request->all(), [
-            'client_id' => 'required',
             'appointment_id' => 'required',
             'patient_name' => 'required|min:3',
             'phone_number' => 'required',
@@ -106,7 +105,8 @@ class AppointmentController extends Controller
             return response()->json($Validated->messages());
 
         $reservation = new Reservation();
-        $reservation->fill($request->only('client_id', 'appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description'));
+        $reservation->client_id = $request->user()->id;
+        $reservation->fill($request->only('appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description'));
         if($reservation->save()){
             $this->updateAppointmentStatus($request->appointment_id);
             return response()->json(['message' => 'appointment reserved successfully.'], 200);
