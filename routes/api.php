@@ -34,4 +34,8 @@ Route::middleware('auth:api')->group(function () {
     route::post('appointment/reserve', 'Api\AppointmentController@reserveAppointment');
     Route::post('messages', 'Api\MessageController@index');
     Route::post('message/create', 'Api\MessageController@create');
+
+    Route::get('about_massara', 'Api\AppController@aboutMassara');
+    Route::get('center', 'Api\AppController@center');
+    Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
 });
