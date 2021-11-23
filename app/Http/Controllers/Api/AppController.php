@@ -8,6 +8,7 @@ use App\Models\Term;
 use App\Models\Center;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class AppController extends Controller
 {
@@ -62,6 +63,34 @@ class AppController extends Controller
         }
 
         return response()->json(['terms_and_conditions' => $terms_and_conditions], 200);
+    }
+
+    public function contactMail(Request $request){
+        $Validated = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        if($Validated->fails())
+            return response()->json($Validated->messages(), 403);
+
+        $center = Center::first();
+        if(isset($center) && $center!=null){
+            $data = ['name'=>$request->name, 'subject'=>$request->subject, 'message_body'=>$request->message];
+            $message = $request->message;
+            Mail::send('mail', $data, function($message) use ($center, $request) {
+                $message->to($center->contact_email, 'Massara')
+                ->subject($request->subject)
+                ->from('info@massara.com','Massara Contact Us');
+             });
+    
+             return response()->json(['message' => 'Your Message Sent Successfully.'], 200);
+        }else{
+            return response()->json(['message' => 'No Contact Mail is configured.'], 403);
+        }
+        
     }
     
 }
