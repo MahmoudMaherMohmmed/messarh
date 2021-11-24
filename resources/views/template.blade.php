@@ -426,6 +426,22 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
+                        <li id="appointment">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@lang('messages.appointments.appointments')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="appointment_index"><a href="{{url('appointment')}}">@lang('messages.appointments.appointments')</a></li>
+                                <li id="appointment_create"><a href="{{url('appointment/create')}}">@lang('messages.appointments.create_appointment')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
                                 <i class="glyphicon glyphicon-user"></i>

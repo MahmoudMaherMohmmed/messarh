@@ -36,7 +36,7 @@
                             @foreach ($appointments as $appointment)
                             <tr class="table-flag-blue">
                                 <th><input type="checkbox" name="selected_rows[]" class="select_all_template" value="{{ $appointment->id }}"></th>
-                                <td>{{ $appointment->doctor_id }}</td>
+                                <td>{{ $appointment->doctor->name }}</td>
                                 <td>{{ $appointment->date }}</td>
                                 <td>{{ $appointment->from }}</td>
                                 <td>{{ $appointment->to }}</td>

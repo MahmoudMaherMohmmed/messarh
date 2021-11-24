@@ -353,6 +353,16 @@ return [
         'medical_examination_price' => 'سعر الكشف',
     ],
 
+    'appointments'=>[
+        'appointments' => 'مواعيد',
+        'create_appointment' => 'أضافة موعد جديد',
+        'doctor' => 'معالج',
+        'date' => 'التاريخ',
+        'time' => 'الوقت',
+        'start_from' => 'من',
+        'end_at' => 'الى',
+    ],
+
     'clients'=>[
         'clients' => 'عملاء التطبيق',
         'create_client' => 'اضافة عميل جديد',

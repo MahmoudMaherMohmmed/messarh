@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Validator;
 
 class AppointmentController extends Controller
@@ -28,8 +31,9 @@ class AppointmentController extends Controller
     public function create()
     {
         $appointment = null;
+        $doctors = Doctor::all();
 
-        return view('appointment.form', compact('appointment'));
+        return view('appointment.form', compact('appointment', 'doctors'));
     }
 
     /**
@@ -42,7 +46,8 @@ class AppointmentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'doctor_id'      => 'required',
-            'date'     => 'required',
+            'date_from'     => 'required',
+            'date_to'     => 'required',
             'from'  => 'required',
             'to'     => 'required',
         ]);
@@ -51,9 +56,22 @@ class AppointmentController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $appointment = new Appointment();
-        $appointment->fill($request);
-        $appointment->save();
+        $dates = CarbonPeriod::create($request->date_from, $request->date_to);
+        if(isset($dates) && $dates!=null){
+            $times = $this->getHoursBetweenPeriod($request->from, $request->to);
+            foreach($dates as $date){
+                if(isset($times) && count($times)>0){
+                    foreach($times as $time){
+                        $appointment = new Appointment();
+                        $appointment->doctor_id = $request->doctor_id;
+                        $appointment->date = $date->format('Y-m-d');
+                        $appointment->from = date('H:i A', strtotime($time));
+                        $appointment->to = date('H:i A', (strtotime($time) + 60*60) );
+                        $appointment->save();
+                    }
+                }
+            }
+        }
 
         \Session::flash('success', trans('messages.Added Successfully'));
 
@@ -81,7 +99,7 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $appointment = Appointment::findOrFail($id);
-        return view('appointment.form', compact('apointment'));
+        return view('appointment.form', compact('appointment'));
     }
 
     /**
@@ -125,5 +143,19 @@ class AppointmentController extends Controller
         $appointment->delete();
 
         return redirect()->back();
+    }
+
+    private function getHoursBetweenPeriod($from, $to){
+        $times = [];
+        $tStart = strtotime($from);
+        $tEnd = strtotime($to);
+        $tNow = $tStart;
+
+        while($tNow <= $tEnd){
+            array_push($times, date('H:i',$tNow));
+            $tNow = strtotime('+60 minutes',$tNow);
+        }
+
+        return $times;
     }
 }

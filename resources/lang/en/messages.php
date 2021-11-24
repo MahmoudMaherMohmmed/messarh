@@ -359,6 +359,16 @@ return [
         'medical_examination_price' => 'Medical Examination Price',
     ],
 
+    'appointments'=>[
+        'appointments' => 'Appointments',
+        'create_appointment' => 'Add New Appointment',
+        'doctor' => 'Doctor',
+        'date' => 'Date',
+        'time' => 'Time',
+        'start_from' => 'From',
+        'end_at' => 'To',
+    ],
+
     'clients'=>[
         'clients' => 'Clients',
         'create_client' => 'Add New Client',
