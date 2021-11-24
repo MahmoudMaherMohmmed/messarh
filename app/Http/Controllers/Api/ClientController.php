@@ -68,7 +68,7 @@ class ClientController extends Controller
     }
 
     public function profile(Request $request){
-        $user = $request->user();
+        $user = $this->formatUser($request->user());
 
         return response()->json(['user' => $user], 200);
     }
@@ -89,7 +89,7 @@ class ClientController extends Controller
         $updated_client->fill($request->only('name', 'email', 'phone'));
         $updated_client->update();
         
-        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $updated_client], 200);
+        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $this->formatUser($updated_client)], 200);
     }
 
     public function updateProfileImage(Request $request){
@@ -108,7 +108,19 @@ class ClientController extends Controller
         }
         $updated_client->update();
 
-        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $updated_client], 200);
+        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $this->formatUser($updated_client)], 200);
+    }
+
+    private function formatUser($user){
+        $user = [
+            "id" => $user->id,
+            "name" => $user->name,
+            "email" => $user->email,
+            "image" => isset($user->image) && $user->image!=null ? url($user->image) : null,
+            "phone" => $user->phone,
+        ];
+
+        return $user;
     }
 
        /**
