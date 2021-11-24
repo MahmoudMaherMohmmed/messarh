@@ -29,6 +29,7 @@
                                 <th>@lang('messages.appointments.date')</th>
                                 <th>@lang('messages.appointments.start_from')</th>
                                 <th>@lang('messages.appointments.end_at')</th>
+                                <th>@lang('messages.status.status')</th>
                                 <th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
                             </tr>
                         </thead>
@@ -40,13 +41,9 @@
                                 <td>{{ $appointment->date }}</td>
                                 <td>{{ $appointment->from }}</td>
                                 <td>{{ $appointment->to }}</td>
+                                <td>{{ $appointment->status==0 ? 'Available' : 'Reserved'}}</td>
                                 <td class="visible-xs visible-sm visible-md visible-lg">
                                     <div class="btn-group">
-                                        @if (get_action_icons('appointment/{id}/edit', 'get'))
-                                        <a class="btn btn-sm show-tooltip" title=""
-                                            href="{{ url('appointment/' . $appointment->id . '/edit') }}"
-                                            data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                        @endif
                                         @if (get_action_icons('appointment/{id}/delete', 'get'))
                                         <form action="{{ route('appointment.destroy', $appointment->id) }}"
                                             method="POST" style="display: initial;">

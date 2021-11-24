@@ -99,7 +99,8 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $appointment = Appointment::findOrFail($id);
-        return view('appointment.form', compact('appointment'));
+        $doctors = Doctor::all();
+        return view('appointment.form', compact('appointment', 'doctors'));
     }
 
     /**
@@ -111,22 +112,6 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'doctor_id'      => 'required',
-            'date'     => 'required',
-            'from'  => 'required',
-            'to'     => 'required',
-            'status' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $appointment = Appointment::findOrFail($id);
-        $appointment->fill();
-        $appointment->save();
-
         \Session::flash('success', trans('messages.updated successfully'));
         return redirect('/appointment');
     }
