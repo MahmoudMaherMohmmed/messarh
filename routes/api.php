@@ -32,6 +32,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('appointments/{doctor_id}', 'Api\AppointmentController@doctorAppointments');
     Route::post('day_appointments', 'Api\AppointmentController@dayAppointments');
     route::post('appointment/reserve', 'Api\AppointmentController@reserveAppointment');
+    route::post('client/reservation', 'Api\AppointmentController@clientReservations');
     Route::post('messages', 'Api\MessageController@index');
     Route::post('message/create', 'Api\MessageController@create');
 

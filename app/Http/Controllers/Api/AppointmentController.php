@@ -122,4 +122,32 @@ class AppointmentController extends Controller
 
         return true;
     }
+
+    public function clientReservations(Request $request){
+        $client_id = $request->user()->id;
+        $reservations_array = [];
+
+        $reservations = Reservation::where('client_id', $client_id)->get();
+        if(isset($reservations) && $reservations!=null){
+            foreach($reservations as $reservation){
+                array_push($reservations_array, $this->formatReservation($reservation, $request->lang));
+            }
+        }
+
+        return response()->json(['reservations' => $reservations_array], 200);
+    }
+
+    private function formatReservation($reservation, $lang){
+        $reservation = [
+            'doctor' => isset($lang) && $lang!=null ? $reservation->appointment->doctor->getTranslation('name', $lang) : $reservation->appointment->doctor->name,
+            'specialty' => isset($lang) && $lang!=null ? $reservation->appointment->doctor->specialty->getTranslation('title', $lang) : $reservation->appointment->doctor->specialty->title,
+            'subspecialty' => isset($lang) && $lang!=null ? $reservation->appointment->doctor->getTranslation('subspecialty', $lang) : $reservation->appointment->doctor->subspecialty,
+            'medical_examination_price' => $reservation->appointment->doctor->medical_examination_price,
+            'date' => $reservation->appointment->date,
+            'from' => $reservation->appointment->from,
+            'to' => $reservation->appointment->to,
+        ];
+
+        return $reservation;
+    }
 }
