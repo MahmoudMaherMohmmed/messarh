@@ -35,6 +35,7 @@ class MessageController extends Controller
         $message->client_id = $request->user()->id;
         $message->message = $request->message;
         $message->action = 0;
+        $message->status = 0;
         $message->save();
 
         return response()->json(['message' => $message], 200);
