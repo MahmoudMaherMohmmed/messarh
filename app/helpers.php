@@ -93,14 +93,10 @@ function get_static_routes()
         Route::Resource('doctor', 'DoctorController');
         Route::Resource('client', 'ClientController');
         Route::Resource('appointment', 'AppointmentController');
+        Route::Resource('reservation', 'ReservationController');
         Route::Resource('center', 'CenterController');
         Route::Resource('massara', 'MassaraController');
         Route::Resource('term', 'TermController');
-
-        // Route::get('content/allData', 'ContentController@allData');
-        // Route::get('category/allData', 'CategoryController@allData');
-        // Route::get('post/allData', 'PostController@allData');
-        // Route::get('rbt/allData', 'RbtController@allData');
     });
 
 

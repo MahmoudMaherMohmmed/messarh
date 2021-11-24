@@ -363,6 +363,11 @@ return [
         'end_at' => 'الى',
     ],
 
+    'reservations'=>[
+        'reservations' => 'الحجوزات',
+        'create_reservation' => 'حجز موعد',
+    ],
+
     'clients'=>[
         'clients' => 'عملاء التطبيق',
         'create_client' => 'اضافة عميل جديد',

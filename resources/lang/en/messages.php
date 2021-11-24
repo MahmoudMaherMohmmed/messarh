@@ -369,6 +369,11 @@ return [
         'end_at' => 'To',
     ],
 
+    'reservations'=>[
+        'reservations' => 'Reservations',
+        'create_reservation' => 'Add New Reservation',
+    ],
+
     'clients'=>[
         'clients' => 'Clients',
         'create_client' => 'Add New Client',
