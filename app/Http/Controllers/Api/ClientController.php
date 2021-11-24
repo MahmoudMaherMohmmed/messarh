@@ -78,8 +78,8 @@ class ClientController extends Controller
 
         $Validated = Validator::make($request->all(), [
             'name'      => 'required|min:3',
-            'email'     => 'required|unique:clients,email,'.$client->email,
-            'phone'     => 'required|unique:clients,phone,'.$client->phone,
+            'email'     => 'required|unique:clients,email,'.$client->id,
+            'phone'     => 'required|unique:clients,phone,'.$client->id,
         ]);
 
         if($Validated->fails())
@@ -89,7 +89,7 @@ class ClientController extends Controller
         $updated_client->fill($request->only('name', 'email', 'phone'));
         $updated_client->update();
         
-        return response()->json(['messaage' => 'Your profile updated successfully.'], 200);
+        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $updated_client], 200);
     }
 
     public function updateProfileImage(Request $request){
@@ -108,7 +108,7 @@ class ClientController extends Controller
         }
         $updated_client->update();
 
-        return response()->json(['messaage' => 'Your profile updated successfully.'], 200);
+        return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $updated_client], 200);
     }
 
        /**
