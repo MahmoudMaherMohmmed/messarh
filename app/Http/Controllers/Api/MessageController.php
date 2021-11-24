@@ -36,7 +36,7 @@ class MessageController extends Controller
         $message->message = $request->message;
         $message->save();
 
-        return response()->json(['message' => true], 200);
+        return response()->json(['message' => $message], 200);
     }
     
 }
