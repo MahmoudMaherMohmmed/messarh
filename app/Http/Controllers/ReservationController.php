@@ -137,58 +137,22 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|array',
-            'name.*' => 'required|string',
-            'subspecialty' => 'required|array',
-            'subspecialty.*' => 'required|string',
-            'medical_examination_price' => 'required',
-            'graduation_university' => 'required|array',
-            'graduation_university.*' => 'required|string',
-            'specialty_id' => 'required',
-            'image' => ''
+            'patient_name' => 'required',
+            'phone_number' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $doctor = Doctor::findOrFail($id);
-
-        $doctor->fill($request->except('name', 'subspecialty', 'graduation_university', 'ímage'));
-
-        if ($request->image) {
-            $imgExtensions = array("png", "jpeg", "jpg");
-            $file = $request->image;
-            if (!in_array($file->getClientOriginalExtension(), $imgExtensions)) {
-                \Session::flash('failed', trans('messages.Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..'));
-                return back();
-            }
-
-            if ($doctor->image) {
-                $this->delete_image_if_exists(base_path('/uploads/doctors/' . basename($doctor->image)));
-            }
-
-            $doctor->image = $this->handleFile($request['image']);
-        }
-
-        foreach ($request->name as $key => $value) {
-            $doctor->setTranslation('name', $key, $value);
-        }
-
-        $doctor->specialty_id = $request->specialty_id;
-    
-        foreach ($request->subspecialty as $key => $value) {
-            $doctor->setTranslation('subspecialty', $key, $value);
-        }
-
-        foreach ($request->graduation_university as $key => $value) {
-            $doctor->setTranslation('graduation_university', $key, $value);
-        }
-        
-        $doctor->save();
+        $reservation = Reservation::findOrFail($id);
+        $reservation->fill($request->all());
+        $reservation->save();
 
         \Session::flash('success', trans('messages.updated successfully'));
-        return redirect('/doctor');
+        return redirect('/reservation');
     }
 
     /**
@@ -199,8 +163,8 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        $doctor = Doctor::find($id);
-        $doctor->delete();
+        $reservation = Reservation::find($id);
+        $reservation->delete();
 
         return redirect()->back();
     }

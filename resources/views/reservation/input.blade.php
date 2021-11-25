@@ -20,6 +20,37 @@
 </div> 
 
 <div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.reservations.patient_name') </label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <input type="text" class="form-control" name="patient_name" value="@if ($reservation) {!! $reservation->patient_name !!} @endif" />
+    </div>
+</div> 
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.reservations.phone_number') </label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <input type="text" class="form-control" name="phone_number" value="@if ($reservation) {!! $reservation->phone_number !!} @endif" />
+    </div>
+</div> 
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.reservations.age') </label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <input type="text" class="form-control" name="age" value="@if ($reservation) {!! $reservation->age !!} @endif" />
+    </div>
+</div> 
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.reservations.gender') </label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <select class="form-control chosen-rtl" name="gender" required>
+            <option value="0" {{$reservation && $reservation->gender==0 ? 'selected' : '' }}>Male</option>
+            <option value="1" {{$reservation && $reservation->gender==1 ? 'selected' : '' }}>Female</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
         {!! Form::submit($buttonAction,['class'=>'btn btn-primary']) !!}
     </div>
