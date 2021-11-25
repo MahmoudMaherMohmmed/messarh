@@ -95,6 +95,7 @@ function get_static_routes()
         Route::Resource('appointment', 'AppointmentController');
         Route::Resource('reservation', 'ReservationController');
         Route::Resource('center', 'CenterController');
+        Route::Resource('message', 'MessageController');
         Route::Resource('massara', 'MassaraController');
         Route::Resource('term', 'TermController');
     });
