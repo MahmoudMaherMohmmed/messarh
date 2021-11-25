@@ -400,6 +400,10 @@ return [
         'create_massara' => 'تعديل مسرة',
     ],
 
+    'messages'=>[
+        'messages' => 'الرسايل',
+    ],
+
     'terms_conditions'=>[
         'terms_conditions' => 'الشروط والاحكام',
     ],

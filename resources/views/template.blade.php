@@ -474,6 +474,21 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
+                        <li id="message">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@lang('messages.messages.messages')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="message_index"><a href="{{url('message')}}">@lang('messages.messages.messages')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
                         <li id="center">
                             <a href="#" class="dropdown-toggle">
                                 <i class="glyphicon glyphicon-user"></i>

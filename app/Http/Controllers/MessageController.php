@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Auth;
 
 class MessageController extends Controller
 {
@@ -14,8 +15,21 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
-        return view('message.index', compact('messages'));
+        $clients = [];
+        $clients_id = Message::orderBy('created_at', 'DESC')->get()->unique('client_id');
+        if(isset($clients_id) && $clients_id!=null){
+            foreach($clients_id as $client){
+                array_push($clients, [
+                    'client_id' => $client->client->id,
+                    'client_name' => $client->client->name,
+                    'client_image' => $client->client->image,
+                    'message' => $client->message,
+                    'date' => $client->created_at->format('d M')
+                ]);
+            }
+        }
+
+        return view('message.index', compact('clients'));
     }
 
     /**
@@ -36,7 +50,14 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = new Message();
+        $message->user_id = Auth::id();
+        $message->client_id = $request->client_id;
+        $message->message = $request->message;
+        $message->action = 1;
+        $message->save();
+
+        return true;
     }
 
     /**
@@ -82,5 +103,13 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         //
+    }
+
+    public function clientMessages($client_id){
+        $messages = Message::where('client_id', $client_id)->get();
+
+        $client_messages_html = view('partial.client_messages', compact('messages'))->render();
+
+        return $client_messages_html;
     }
 }
