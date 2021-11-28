@@ -123,7 +123,7 @@ class ClientController extends Controller
         $client = $request->user();
         if ($client) {
             if (Hash::check($request->old_password, $client->password)) {
-                $client->password = Hash::make($client->new_password);
+                $client->password = Hash::make($request->new_password);
                 $client->save();
 
                 return response(["message" => "Your password changed successfully."], 200);
@@ -152,7 +152,7 @@ class ClientController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        
+
         return response()->json(['message' => 'Successfully logged out'], 200);
     }
 
