@@ -3,7 +3,7 @@
     @lang('messages.messages.messages')
 @stop
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" /> -->
 
 <style>
     body {
@@ -43,10 +43,170 @@
     border-radius: 0.5rem;
     }
 
+    
+    element.style {
+    }
+    .messages-box, .chat-box {
+        height: 500px;
+        overflow-y: scroll;
+    }
+    .pb-5, .py-5 {
+        padding-bottom: 3rem!important;
+    }
+    .pt-5, .py-5 {
+        padding-top: 3rem!important;
+    }
+    .pl-4, .px-4 {
+        padding-left: 1.5rem!important;
+    }
+    .pr-4, .px-4 {
+        padding-right: 1.5rem!important;
+    }
+    .bg-white {
+        background-color: #fff!important;
+    }
+    .pb-1, .py-1 {
+    padding-bottom: 0.25rem!important;
+    }
+    .pt-1, .py-1 {
+        padding-top: 0.25rem!important;
+    }
+    .mb-0, .my-0 {
+        margin-bottom: 0!important;
+    }
+    .pr-4, .px-4 {
+        padding-right: 1.5rem!important;
+    }
+    .pb-2, .py-2 {
+        padding-bottom: 0.5rem!important;
+    }
+    .pt-2, .py-2 {
+        padding-top: 0.5rem!important;
+    }
+    .bg-light {
+        background-color: #f8f9fa!important;
+    }
+    .text-small {
+        font-size: 0.9rem;
+    }
+    .font-italic {
+        font-style: italic!important;
+    }
+    .mb-0, .my-0 {
+        margin-bottom: 0!important;
+    }
+    .font-weight-bold {
+        font-weight: 700!important;
+    }
+    .mb-1, .my-1 {
+    margin-bottom: 0.25rem!important;
+    }
+    .align-items-center {
+        -ms-flex-align: center!important;
+        align-items: center!important;
+    }
+    .justify-content-between {
+        -ms-flex-pack: justify!important;
+        justify-content: space-between!important;
+    }
+    .d-flex {
+        display: -ms-flexbox!important;
+        display: flex!important;
+    }
+    .media {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+    .ml-4, .mx-4 {
+        margin-left: 1.5rem!important;
+    }
+    .pl-0, .px-0 {
+        padding-left: 0!important;
+    }
+
+    .pr-0, .px-0 {
+        padding-right: 0!important;
+    }
+
+    .ml-3, .mx-3 {
+        margin-left: 1rem!important;
+    }
     input::placeholder {
     font-size: 0.9rem;
     color: #999;
     }
+
+    .pt-2, .py-2 {
+        padding-top: 0.5rem!important;
+    }
+    .pb-2, .py-2 {
+        padding-bottom: 0.5rem!important;
+    }
+    .pl-3, .px-3 {
+        padding-left: 1rem!important;
+    }
+    .pr-3, .px-3 {
+        padding-right: 1rem!important;
+    }
+    .pb-2, .py-2 {
+        padding-bottom: 0.5rem!important;
+    }
+    .pt-2, .py-2 {
+        padding-top: 0.5rem!important;
+    }
+    .mb-2, .my-2 {
+        margin-bottom: 0.5rem!important;
+    }
+    .rounded {
+        border-radius: 0.25rem!important;
+    }
+
+    .media-body, .media-left, .media-right {
+        display: table-cell; 
+        /vertical-align: top;
+    }
+    .media-body {
+        width: 10000px; 
+    }
+    .media, .media-body {
+        overflow: hidden; 
+        zoom: 1; 
+    }
+    .media-body, .media-left, .media-right {
+        display: table-cell; 
+        vertical-align: top; 
+    }
+    .media-body {
+        width: 10000px; 
+    }
+    .media, .media-body {
+        overflow: hidden; 
+        zoom: 1; 
+    }
+    .ml-3, .mx-3 {
+        margin-left: 1rem!important;
+    }
+    .media-body {
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    .ml-auto, .mx-auto {
+        margin-left: auto!important;
+    }
+
+    .w-50 {
+        width: 50%!important;
+    }
+
+    .input-group {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+    }
+
 </style>
 @section('content')
     <div class="row">
@@ -58,7 +218,7 @@
                         <div class="container py-5 px-4">
                             <div class="row rounded-lg overflow-hidden shadow">
                                 <!-- Users box-->
-                                <div class="col-5 px-0">
+                                <div class="col-md-5 px-0">
                                 <div class="bg-white">
 
                                     <div class="bg-gray px-4 py-2 bg-light">
@@ -86,7 +246,7 @@
                                 </div>
                                 </div>
                                 <!-- Chat Box-->
-                                <div class="col-7 px-0">
+                                <div class="col-md-7 px-0">
                                 <div class="px-4 py-5 chat-box bg-white" id="client_messages">
                                 
                                 </div>

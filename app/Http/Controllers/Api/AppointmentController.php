@@ -81,7 +81,7 @@ class AppointmentController extends Controller
         $appointments = [];
 
         if(isset($request->date) && $request->date!=null){
-            $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->get(['id', 'from', 'to', 'status']);
+            $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('status', 0)->get(['id', 'from', 'to', 'status']);
         }
 
         return response()->json(['appointments' => $appointments], 200);
