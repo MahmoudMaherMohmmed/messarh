@@ -111,6 +111,32 @@ class ClientController extends Controller
         return response()->json(['messaage' => 'Your profile updated successfully.', 'user' => $this->formatUser($updated_client)], 200);
     }
 
+    public function updatePassword(Request $request){
+        $Validated = Validator::make($request->all(), [
+            'old_password'     => 'required',
+            'new_password'  => 'required|min:6',
+        ]);
+
+        if($Validated->fails())
+            return response()->json($Validated->messages(), 403);
+
+        $client = $request->user();
+        if ($client) {
+            if (Hash::check($request->old_password, $client->password)) {
+                $client->password = Hash::make($client->new_password);
+                $client->save();
+
+                return response(["message" => "Your password changed successfully."], 200);
+            } else {
+                $response = ["message" => "Old password is wrong."];
+                return response($response, 403);
+            }
+        } else {
+            $response = ["message" =>'User does not exist.'];
+            return response($response, 403);
+        }
+    }
+
     private function formatUser($user){
         $user = [
             "id" => $user->id,

@@ -54,7 +54,7 @@
         <input type="url" class="form-control" name="facebook_link" placeholder="@lang('messages.centers.facebook_link')" value="@if ($center) {!! $center->facebook_link !!} @endif" />
     </div>
     <div class="col-sm-3 col-lg-3 controls">
-        <input type="url" class="form-control" name="whatsapp_link" placeholder="@lang('messages.centers.whatsapp_link')" value="@if ($center) {!! $center->whatsapp_link !!} @endif" />
+        <input type="text" class="form-control" name="whatsapp_link" placeholder="@lang('messages.centers.whatsapp_link')" value="@if ($center) {!! $center->whatsapp_link !!} @endif" />
     </div>
     <div class="col-sm-3 col-lg-4 controls">
         <input type="url" class="form-control" name="instagram_link" placeholder="@lang('messages.centers.instagram_link')" value="@if ($center) {!! $center->instagram_link !!} @endif" />
