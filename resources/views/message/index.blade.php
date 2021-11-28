@@ -3,7 +3,7 @@
     @lang('messages.messages.messages')
 @stop
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" /> -->
 
 <style>
     body {
@@ -201,10 +201,38 @@
         width: 50%!important;
     }
 
-    .input-group {
+    .input-group-append {
+        margin-left: -1px;
+    }
+
+    .input-group-append, .input-group-prepend {
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .input-group .form-control, .input-group-addon, .input-group-btn {
+        display: table-cell;
+    }
+
+    .input-group .form-control {
         position: relative;
-        display: table;
-        border-collapse: separate;
+        z-index: 2;
+        float: left;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .pb-4, .py-4 {
+        padding-bottom: 1.5rem!important;
+    }
+    .pt-4, .py-4 {
+        padding-top: 1.5rem!important;
+    }
+    .rounded-0 {
+        border-radius: 0!important;
+    }
+    .border-0 {
+        border: 0!important;
     }
 
 </style>
