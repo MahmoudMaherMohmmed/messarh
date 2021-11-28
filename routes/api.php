@@ -41,4 +41,5 @@ Route::middleware('auth:api')->group(function () {
     Route::get('center', 'Api\AppController@center');
     Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
     Route::post('contact_email', 'Api\AppController@contactMail');
+    Route::post('logout', 'Api\ClientController@logout');
 });

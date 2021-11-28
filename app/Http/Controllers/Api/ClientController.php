@@ -149,6 +149,13 @@ class ClientController extends Controller
         return $user;
     }
 
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        
+        return response()->json(['message' => 'Successfully logged out'], 200);
+    }
+
        /**
      * handle image file that return file path
      * @param File $file
