@@ -123,8 +123,11 @@ class ClientController extends Controller
         $client = $request->user();
         if ($client) {
             if (Hash::check($request->old_password, $client->password)) {
-                $client->password = Hash::make($request->new_password);
-                $client->save();
+                $request->user()->token()->revoke();
+
+                $update_client = Client::where('id', $client->id)->first();
+                $update_client->password = $request->new_password;
+                $update_client->save();
 
                 return response(["message" => "Your password changed successfully."], 200);
             } else {
