@@ -121,6 +121,7 @@
     }
     .ml-4, .mx-4 {
         margin-left: 1.5rem!important;
+        margin-right: 1.5rem!important;
     }
     .pl-0, .px-0 {
         padding-left: 0!important;
