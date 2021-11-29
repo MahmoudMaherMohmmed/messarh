@@ -139,7 +139,7 @@ class AppointmentController extends Controller
 
     private function formatReservation($reservation, $lang){
         $reservation = [
-            'oder_id' => '#'.$reservation->id,
+            'order_id' => '#'.$reservation->id,
             'doctor' => isset($lang) && $lang!=null ? $reservation->appointment->doctor->getTranslation('name', $lang) : $reservation->appointment->doctor->name,
             'doctor_image' => $reservation->appointment->doctor->image != null ? url($reservation->appointment->doctor->image) : '',
             'specialty' => isset($lang) && $lang!=null ? $reservation->appointment->doctor->specialty->getTranslation('title', $lang) : $reservation->appointment->doctor->specialty->title,
