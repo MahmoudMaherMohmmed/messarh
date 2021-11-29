@@ -234,6 +234,9 @@
     .border-0 {
         border: 0!important;
     }
+    .rounded-circle{
+        border-radius: 50%;
+    }
 
 </style>
 @section('content')
