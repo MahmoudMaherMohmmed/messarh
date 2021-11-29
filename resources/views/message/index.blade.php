@@ -263,7 +263,7 @@
                                             @if(isset($clients) && $clients!=null && count($clients)>0)
                                             @foreach($clients as $client)
                                                 <a onClick="clientMessages({{$client['client_id']}})" id="client_{{$client['client_id']}}" class="list-group-item list-group-item-action rounded-0">
-                                                    <div class="media"><img src="{{$client['client_image']}}" alt="user" width="50" class="rounded-circle">
+                                                    <div class="media"><img src="{{isset($client['client_image'])&&$client['client_image']!=null ? url($client['client_image']) : 'https://bootstrapious.com/i/snippets/sn-chat/avatar.svg'}}" alt="user" width="50" class="rounded-circle">
                                                         <div class="media-body ml-4">
                                                         <div class="d-flex align-items-center justify-content-between mb-1">
                                                             <h6 class="mb-0">{{$client['client_name']}}</h6><small class="small font-weight-bold">{{$client['date']}}</small>
