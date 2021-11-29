@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Post;
+use Config;
+use Session;
 use App\Observers\PostObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
         //         );
         //     });
         // }
+
+        if (array_key_exists('ar', Config::get('languages'))) {
+            Session::put('applocale', 'ar');
+        }
     }
 
     /**
