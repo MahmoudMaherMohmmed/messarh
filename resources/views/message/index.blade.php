@@ -289,7 +289,7 @@
                                 <form action="#" class="bg-light" id="message_form" style="padding-bottom: 6px;">
                                     <div class="input-group">
                                         <div class="input-group-append">
-                                            <input type="text" name="message" id="message" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+                                            <input type="text" name="message" id="message_text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
                                             <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
                                         </div>
                                     </div>
@@ -323,7 +323,7 @@
 
         $('#message_form').on('submit',function(e){
             e.preventDefault();
-            console.log($('#message').val());
+            console.log($('#message_text').val());
 
             $.ajax({
                 url: "{{url('/message')}}",
