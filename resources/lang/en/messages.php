@@ -408,6 +408,7 @@ return [
 
     'messages'=>[
         'messages' => 'Messages',
+        'recent' => 'Recent',
     ],
 
     'terms_conditions'=>[

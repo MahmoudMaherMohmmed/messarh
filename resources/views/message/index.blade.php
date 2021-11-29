@@ -256,7 +256,7 @@
                                 <div class="bg-white">
 
                                     <div class="bg-gray px-4 py-2 bg-light">
-                                    <p class="h5 mb-0 py-1">Recent</p>
+                                    <p class="h5 mb-0 py-1">@lang('messages.messages.recent')</p>
                                     </div>
 
                                     <div class="messages-box">

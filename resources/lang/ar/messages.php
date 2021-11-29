@@ -402,6 +402,7 @@ return [
 
     'messages'=>[
         'messages' => 'الرسايل',
+        'recent' => 'حاليا',
     ],
 
     'terms_conditions'=>[
