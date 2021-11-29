@@ -334,6 +334,7 @@
                 },
                 success:function(response){
                     clientMessages(current_client_id);
+                    $('#message_text').val("");
                 },
                 error: function(response) {
                     console.log(response);
