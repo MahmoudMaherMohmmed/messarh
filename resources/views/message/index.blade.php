@@ -235,6 +235,8 @@
         border: 0!important;
     }
     .rounded-circle{
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
     }
 
