@@ -136,7 +136,7 @@ function ConfirmDelete()
             </button>
             <a class="navbar-brand" href="{{url('/dashboard')}}">
                 <small>
-                    <i class="fa fa-user-secret"></i>
+                    <i class="fa fa-home"></i>
                     @lang('messages.dashboard')
                 </small>
             </a>
@@ -247,7 +247,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </li>
                     @endif
 
-                    @if (get_action_icons('setting', 'get'))
+                    <!-- @if (get_action_icons('setting', 'get'))
                     <li id="setting">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-gears"></i>
@@ -255,7 +255,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             <b class="arrow fa fa-angle-right"></b>
                         </a>
 
-                        <!-- BEGIN Submenu -->
+                        
                         <ul class="submenu">
                             <li id="setting-create"><a href="{{url('setting/new')}}">@lang('messages.Setting.Add Settings')</a></li>
                             <li id="setting-index"><a href="{{url('setting')}}">@lang('messages.Setting.Setting')</a></li>
@@ -264,7 +264,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             <li id="setting-seed"><a href="{{url('admin/seed_manager')}}">@lang('messages.Setting.Create Seed Files')</a></li>
                             <li id="setting-migrate"><a href="{{url('admin/migrate_manager')}}">@lang('messages.Setting.Create Migrate Files')</a></li>
                         </ul>
-                        <!-- END Submenu -->
                     </li>
                     @endif
 
@@ -282,7 +281,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    @endif
+                    @endif -->
 
                     @if (get_action_icons('setting', 'get'))
                     <li id="file_manager">
@@ -319,7 +318,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </li>
                     @endif
 
-                    @if (get_action_icons('static_translation', 'get'))
+                    <!-- @if (get_action_icons('static_translation', 'get'))
                     <ul class="nav nav-list">
                         <li id="static">
                             <a href="#" class="dropdown-toggle">
@@ -328,15 +327,13 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="static-create"><a href="{{url('static_translation/create')}}">@lang('messages.Static Translations.Add Static Translation')</a></li>
                                 <li id="static-index"><a href="{{url('static_translation')}}">@lang('messages.Static Translations.Static Translations')</a></li>
                             </ul>
-                            <!-- END Submenu -->
                         </li>
                     </ul>
-                    @endif
+                    @endif -->
 
                     @if (get_action_icons('language', 'get'))
                     <ul class="nav nav-list">
@@ -357,7 +354,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
                     @endif
 
-                    @if (get_action_icons('setting', 'get'))
+                    <!-- @if (get_action_icons('setting', 'get'))
                     <ul class="nav nav-list">
                         <li id="delete-all">
                             <a href="#" class="dropdown-toggle">
@@ -366,14 +363,12 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="delete-all-index"><a href="{{url('delete_all')}}">@lang('messages.Delete All Flag.All Flag') </a></li>
                             </ul>
-                            <!-- END Submenu -->
                         </li>
                     </ul>
-                    @endif
+                    @endif -->
 
                     @if (get_action_icons('country', 'get'))
                     <ul class="nav nav-list">
@@ -396,7 +391,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="specialty">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-list-alt"></i>
                                 <span>@lang('messages.specialties.specialties')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -412,7 +407,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-users"></i>
                                 <span>@lang('messages.doctors.doctors')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -428,7 +423,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="appointment">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-calendar"></i>
                                 <span>@lang('messages.appointments.appointments')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -444,7 +439,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="appointment">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-tasks"></i>
                                 <span>@lang('messages.reservations.reservations')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -460,7 +455,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="doctor">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-users"></i>
                                 <span>@lang('messages.clients.clients')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -476,7 +471,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="message">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-comments"></i>
                                 <span>@lang('messages.messages.messages')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
@@ -491,7 +486,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     <ul class="nav nav-list">
                         <li id="center">
                             <a href="#" class="dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="fa fa-cogs"></i>
                                 <span>@lang('messages.general_settings')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
