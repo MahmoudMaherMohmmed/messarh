@@ -248,7 +248,7 @@
                 <div class="col-md-12">
                     <div class="box box-black">
                     
-                        <div class="container py-5 px-4">
+                        <div class="container px-4">
                             <div class="row rounded-lg overflow-hidden shadow">
                                 <!-- Users box-->
                                 <div class="col-md-5 px-0">
