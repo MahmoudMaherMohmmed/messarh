@@ -25,6 +25,11 @@ Route::post('register', 'Api\ClientController@register');
 Route::get('specialties', 'Api\SpecialtyController@index');
 Route::get('specialty/{id}', 'Api\SpecialtyController@specialty');
 
+Route::get('about_massara', 'Api\AppController@aboutMassara');
+Route::get('center', 'Api\AppController@center');
+Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
+Route::post('contact_email', 'Api\AppController@contactMail');
+
 Route::middleware('auth:api')->group(function () {
     Route::get('profile', 'Api\ClientController@profile');
     Route::post('profile/update', 'Api\ClientController@UpdateProfile');
@@ -37,9 +42,5 @@ Route::middleware('auth:api')->group(function () {
     Route::post('messages', 'Api\MessageController@index');
     Route::post('message/create', 'Api\MessageController@create');
 
-    Route::get('about_massara', 'Api\AppController@aboutMassara');
-    Route::get('center', 'Api\AppController@center');
-    Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
-    Route::post('contact_email', 'Api\AppController@contactMail');
     Route::post('logout', 'Api\ClientController@logout');
 });
