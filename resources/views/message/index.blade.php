@@ -279,7 +279,7 @@
                                 </div>
                                 </div>
                                 <!-- Chat Box-->
-                                <div class="col-md-7 px-0">
+                                <div class="col-md-7 px-0" style="direction: ltr;">
                                 <div class="px-4 py-5 chat-box bg-white" id="client_messages">
                                 
                                 </div>
