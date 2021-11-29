@@ -323,14 +323,13 @@
 
         $('#message_form').on('submit',function(e){
             e.preventDefault();
-            console.log($('#message_text').val());
 
             $.ajax({
                 url: "{{url('/message')}}",
                 type:"POST",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    message: $('#message').val(),
+                    message: $('#message_text').val(),
                     client_id: current_client_id,
                 },
                 success:function(response){
