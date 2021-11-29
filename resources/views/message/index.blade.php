@@ -323,6 +323,7 @@
 
         $('#message_form').on('submit',function(e){
             e.preventDefault();
+            console.log($('#message').val());
 
             $.ajax({
                 url: "{{url('/message')}}",
