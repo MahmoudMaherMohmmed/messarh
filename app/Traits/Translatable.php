@@ -85,7 +85,7 @@ trait Translatable {
                         $trans->table_name = $this->table;
                         $trans->record_id = $this->id;
                         $trans->column_name = $key_;
-                        dd($trans);
+                        dd($value_);
                         $trans->save();
     
                         $has_body = new HasBody();
