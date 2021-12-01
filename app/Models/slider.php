@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Translatable;
 
-class slider extends Model
+class Slider extends Model
 {
     use Translatable, HasFactory;
 
