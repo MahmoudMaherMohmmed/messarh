@@ -70,6 +70,7 @@ trait Translatable {
     }
 
     public function saveTranslations() {
+        dd($this->translation_attributes);
         foreach ($this->translation_attributes as $key => $value) {
             $language_id = Language::where('short_code', $key)->first()->id;
             foreach ($value as $key_ => $value_) {
