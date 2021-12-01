@@ -81,19 +81,11 @@ trait Translatable {
                         $has_body->body = $value_;
                         $has_body->save();
                     }else{
-                        $trans = new HasTranslation();
-                        $trans->table_name = $this->table;
-                        $trans->record_id = $this->id;
-                        $trans->column_name = $key_;
-                        $trans->save();
-    
                         $has_body = new HasBody();
                         $has_body->language_id = $language_id;
                         $has_body->translatable_id = $trans->id;
                         $has_body->body = $value_;
                         $has_body->save();
-
-                        dd($trans, $has_body);
                     }
                 } else {
                     $trans = new HasTranslation();
