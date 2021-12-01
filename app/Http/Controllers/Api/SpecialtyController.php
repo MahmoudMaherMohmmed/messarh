@@ -70,6 +70,7 @@ class SpecialtyController extends Controller
                     'name' => isset($lang) && $lang!=null ? $doctor->getTranslation('name', $lang) : $doctor->name,
                     'subspecialty' => isset($lang) && $lang!=null ? $doctor->getTranslation('subspecialty', $lang) : $doctor->subspecialty,
                     'graduation_university' => isset($lang) && $lang!=null ? $doctor->getTranslation('graduation_university', $lang) : $doctor->graduation_university,
+                    'medical_examination_price' => $doctor->medical_examination_price,
                     'image' => url($doctor->image),
                 ]);
             }
