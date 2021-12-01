@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Massara;
 use App\Models\Term;
 use App\Models\Center;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mail;
@@ -25,7 +26,7 @@ class AppController extends Controller
         }
 
         return response()->json(['massara' => $about_massara], 200);
-    }
+    } 
 
     public function center(Request $request){
         $center = Center::first();
@@ -91,6 +92,28 @@ class AppController extends Controller
             return response()->json(['message' => 'No Contact Mail is configured.'], 403);
         }
         
+    }
+
+    public function sliders(Request $request)
+    {
+        $sliders = $this->formateSliders(Slider::get(), $request->lang);
+
+        return response()->json(['sliders' => $sliders]);
+    }
+
+    private function formateSliders($sliders, $lang){
+        $sliders_array = [];
+
+        foreach($sliders as $slider){
+            array_push($sliders_array, [
+                'id' => $slider->id,
+                'title' => isset($lang) && $lang!=null ? $slider->getTranslation('title', $lang) : $slider->title,
+                'description' => isset($lang) && $lang!=null ? $slider->getTranslation('description', $lang) : $slider->description,
+                'image' => url($slider->image)
+            ]);
+        }
+
+        return $sliders_array;
     }
     
 }

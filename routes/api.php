@@ -29,6 +29,7 @@ Route::get('about_massara', 'Api\AppController@aboutMassara');
 Route::get('center', 'Api\AppController@center');
 Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
 Route::post('contact_email', 'Api\AppController@contactMail');
+Route::get('sliders', 'Api\AppController@sliders');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('profile', 'Api\ClientController@profile');
