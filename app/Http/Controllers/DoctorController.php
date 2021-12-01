@@ -164,8 +164,6 @@ class DoctorController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        dd($request);
-        
         $doctor = Doctor::findOrFail($id);
 
         $doctor->fill($request->except('name', 'subspecialty', 'graduation_university', 'ímage'));
