@@ -56,7 +56,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.doctors.medical_examination_price') <span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        <input type="number" class="form-control" name="medical_examination_price" value="@if ($doctor) {!! $doctor->medical_examination_price !!} @endif" />
+        <input type="text" class="form-control" name="medical_examination_price" value="@if ($doctor) {!! $doctor->medical_examination_price !!} @endif" />
     </div>
 </div> 
 
