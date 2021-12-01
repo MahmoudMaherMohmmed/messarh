@@ -70,13 +70,12 @@ trait Translatable {
     }
 
     public function saveTranslations() {
-        dd($this->translation_attributes);
         foreach ($this->translation_attributes as $key => $value) {
             $language_id = Language::where('short_code', $key)->first()->id;
             foreach ($value as $key_ => $value_) {
 
                 $trans = HasTranslation::where('table_name', $this->table)->where('record_id', $this->id)->where('column_name', $key_)->first();
-                if ($trans) {
+                if (isset($trans) && $trans!=null) {
                     $has_body = HasBody::where('language_id', $language_id)->where('translatable_id', $trans->id)->first();
                     $has_body->body = $value_;
                     $has_body->save();
