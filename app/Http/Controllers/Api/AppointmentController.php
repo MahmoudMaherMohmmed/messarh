@@ -31,9 +31,11 @@ class AppointmentController extends Controller
                 $month_start_date = $day;
                 $months[$day->format('Y M')] = [];
                 $days[$day->format('D')] = [];
+                
                 $this->setMonthDaysArrayValues($days, $day, $appointments);
             }else{
                 if(($month_start_date->diff($day)->days)+1 == $day->daysInMonth){
+                    $this->setMonthDaysArrayValues($days, $day, $appointments);
                     $months[$day->format('Y M')] =  $days;
                     unset($days);
                 }elseif(count($days)<7 && $month_start_date->diff($day)->days<7){
