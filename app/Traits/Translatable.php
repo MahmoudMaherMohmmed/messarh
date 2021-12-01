@@ -85,7 +85,6 @@ trait Translatable {
                         $trans->table_name = $this->table;
                         $trans->record_id = $this->id;
                         $trans->column_name = $key_;
-                        dd($value_);
                         $trans->save();
     
                         $has_body = new HasBody();
@@ -93,6 +92,8 @@ trait Translatable {
                         $has_body->translatable_id = $trans->id;
                         $has_body->body = $value_;
                         $has_body->save();
+
+                        dd($trans, $has_body);
                     }
                 } else {
                     $trans = new HasTranslation();
