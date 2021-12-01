@@ -7,9 +7,12 @@ use App\Models\Massara;
 use App\Models\Term;
 use App\Models\Center;
 use App\Models\Slider;
+use App\Models\Specialty;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mail;
+use DB;
 
 class AppController extends Controller
 {
@@ -114,6 +117,52 @@ class AppController extends Controller
         }
 
         return $sliders_array;
+    }
+
+    public function search($key, Request $request){
+        $doctors = [];
+
+        $specialties = Specialty::join('translatables', 'translatables.record_id','=', 'specialties.id')
+                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+                        ->where('translatables.table_name', 'specialties')
+                        ->where('tans_bodies.body', 'Like', '%'.$key.'%')
+                        ->groupBy(['specialties.id'])
+                        ->get(['specialties.id']);
+
+        if(isset($specialties) && $specialties!=null && count($specialties)>0){
+            foreach($specialties as $specialty){
+                $doctors = $this->formateDoctors($specialty->doctors, $request->lang);
+            }
+        }else{
+            $doctors = Doctor::join('translatables', 'translatables.record_id','=', 'doctors.id')
+                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+                        ->where('translatables.table_name', 'doctors')
+                        ->where('tans_bodies.body', 'Like', '%'.$key.'%')
+                        ->get();
+
+            if(isset($doctors) && $doctors!=null && count($doctors)>0){
+                $doctors = $this->formateDoctors($doctors, $request->lang);
+            }
+        }
+
+        
+        return response()->json(['doctors' => $doctors]);
+    }
+
+    private function formateDoctors($doctors, $lang){
+        $doctors_array = [];
+
+        foreach($doctors as $doctor){
+            array_push($doctors_array,[
+                'id' => $doctor->id,
+                'name' => isset($lang) && $lang!=null ? $doctor->getTranslation('name', $lang) : $doctor->name,
+                'subspecialty' => isset($lang) && $lang!=null ? $doctor->getTranslation('subspecialty', $lang) : $doctor->subspecialty,
+                'graduation_university' => isset($lang) && $lang!=null ? $doctor->getTranslation('graduation_university', $lang) : $doctor->graduation_university,
+                'image' => url($doctor->image),
+            ]);
+        }
+
+        return $doctors_array;
     }
     
 }
