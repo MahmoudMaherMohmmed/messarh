@@ -415,5 +415,10 @@ return [
         'terms_conditions' => 'Terms And Conditions',
         'terms_conditions_update' => 'Update Terms Conditions',
     ],
+
+    'sliders'=>[
+        'sliders' => 'Sliders',
+        'create_slider' => 'Create Slider',
+    ],
     
 ];

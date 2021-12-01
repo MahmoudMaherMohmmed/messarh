@@ -408,4 +408,9 @@ return [
     'terms_conditions'=>[
         'terms_conditions' => 'الشروط والاحكام',
     ],
+
+    'sliders'=>[
+        'sliders' => 'الصفحات التعريفيه',
+        'create_slider' => 'انشاء صفحة تعريفيه',
+    ],
 ];

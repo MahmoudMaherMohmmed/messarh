@@ -99,6 +99,7 @@ function get_static_routes()
         Route::get('admin/get_client_messages/{client_id}', 'MessageController@clientMessages');
         Route::Resource('massara', 'MassaraController');
         Route::Resource('term', 'TermController');
+        Route::Resource('slider', 'SliderController');
     });
 
 
