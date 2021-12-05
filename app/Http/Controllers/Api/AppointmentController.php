@@ -101,6 +101,7 @@ class AppointmentController extends Controller
             'age' => 'required',
             'gender' => 'required',
             'description' => 'required',
+            'payment_type' => 'required',
         ]);
 
         if($Validated->fails())
@@ -108,7 +109,7 @@ class AppointmentController extends Controller
 
         $reservation = new Reservation();
         $reservation->client_id = $request->user()->id;
-        $reservation->fill($request->only('appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description'));
+        $reservation->fill($request->only('appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description', 'payment_type'));
         if($reservation->save()){
             $this->updateAppointmentStatus($request->appointment_id);
             return response()->json(['message' => 'appointment reserved successfully.'], 200);
