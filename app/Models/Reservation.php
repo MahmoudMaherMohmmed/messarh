@@ -10,7 +10,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $table = 'reservations';
-    protected $fillable = ['client_id','appointment_id', 'patient_name', 'phone_number', 'age','gender', 'description', 'status'];
+    protected $fillable = ['client_id','appointment_id', 'patient_name', 'phone_number', 'age','gender', 'description', 'payment_type', 'status'];
 
     public function client()
     {

@@ -5,13 +5,27 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Reservation;
+use App\Models\Bank;
+use App\Models\BankTransfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use App\Http\Services\UploaderService;
+use Illuminate\Http\UploadedFile;
 
 class AppointmentController extends Controller
 {
+    /**
+     * @var IMAGE_PATH
+     */
+    const IMAGE_PATH = 'bank_transfers';
+    
+    public function __construct(UploaderService $uploaderService)
+    {
+        $this->uploaderService = $uploaderService;
+    }
+
     public function doctorAppointments($doctor_id){
 
         $appointments = Appointment::where('doctor_id', $doctor_id)->where('status', 0)->get(['date', 'from', 'to']);
@@ -102,6 +116,7 @@ class AppointmentController extends Controller
             'gender' => 'required',
             'description' => 'required',
             'payment_type' => 'required',
+            'image'      => 'mimes:jpeg,jpg,png'
         ]);
 
         if($Validated->fails())
@@ -111,7 +126,11 @@ class AppointmentController extends Controller
         $reservation->client_id = $request->user()->id;
         $reservation->fill($request->only('appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description', 'payment_type'));
         if($reservation->save()){
-            
+
+            if($reservation->payment_type == 1){
+                $this->saveBankTransfer($request, $reservation->id);
+            }
+
             $this->updateAppointmentStatus($request->appointment_id);
 
             return response()->json(['message' => 'appointment reserved successfully.'], 200);
@@ -124,6 +143,23 @@ class AppointmentController extends Controller
         $appointment = Appointment::where('id', $appointment_id)->first();
         $appointment->status = 1;
         $appointment->save();
+
+        return true;
+    }
+
+    private function saveBankTransfer($request, $reservation_id){
+        $bank = Bank::where('id', $request->bank_id)->first();
+
+        if(isset($bank) && $bank!=null){
+            $bank_transfer = New BankTransfer();
+            $bank_transfer->reservation_id = $reservation_id;
+            $bank_transfer->bank_name = $bank->name;
+            $bank_transfer->bank_account_name = $bank->account_name;
+            $bank_transfer->bank_account_number = $bank->account_number;
+            $bank_transfer->IBAN = $bank->IBAN;
+            $bank_transfer->image = $this->handleFile($request['image']);
+            $bank_transfer->save();
+        }
 
         return true;
     }
@@ -156,5 +192,15 @@ class AppointmentController extends Controller
         ];
 
         return $reservation;
+    }
+
+      /**
+     * handle image file that return file path
+     * @param File $file
+     * @return string
+     */
+    public function handleFile(UploadedFile $file)
+    {
+        return $this->uploaderService->upload($file, self::IMAGE_PATH);
     }
 }
