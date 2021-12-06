@@ -87,8 +87,6 @@ class AppointmentController extends Controller
         foreach($appointments as $appointment){
             if($appointment->date > Carbon::now()->format('Y-m-d') && $appointment->date == $day->format('Y-m-d')){
                 return true;
-            }elseif($appointment->date == Carbon::now()->format('Y-m-d') && $appointment->from > Carbon::now()->format('H:i A') && $appointment->date == $day->format('Y-m-d')){
-                return true;
             }
         }
 
@@ -99,7 +97,11 @@ class AppointmentController extends Controller
         $appointments = [];
 
         if(isset($request->date) && $request->date!=null){
-            $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('status', 0)->get(['id', 'from', 'to', 'status']);
+            if($this->formatDate($request->date) == Carbon::now()->format('Y-m-d')){
+                $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('from', '>', Carbon::now()->format('H:i A'))->where('status', 0)->get(['id', 'from', 'to', 'status']);
+            }else{
+                $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('status', 0)->get(['id', 'from', 'to', 'status']);
+            }
         }
 
         return response()->json(['appointments' => $appointments], 200);
