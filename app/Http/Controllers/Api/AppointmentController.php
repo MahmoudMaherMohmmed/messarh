@@ -85,12 +85,16 @@ class AppointmentController extends Controller
 
     private function checkAppointmentDay($day, $appointments){
         foreach($appointments as $appointment){
-            if($appointment->date >= Carbon::now()->format('Y-m-d') && $appointment->date == $day->format('Y-m-d')){
+            if($appointment->date > Carbon::now()->format('Y-m-d') && $appointment->date == $day->format('Y-m-d')){
                 return true;
+            }elseif($appointment->date == Carbon::now()->format('Y-m-d') && $appointment->from > Carbon::now()->format('H:i A') && $appointment->date == $day->format('Y-m-d')){
+                return true;
+            }else{
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 
     public function dayAppointments(Request $request){
