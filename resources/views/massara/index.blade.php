@@ -54,10 +54,10 @@
 
                                                 <td class="visible-md visible-xs visible-sm visible-lg">
                                                     <div class="btn-group">
-                                                        @if (get_action_icons('center/{id}/edit', 'get'))
+                                                        @if (get_action_icons('massara/{id}/edit', 'get'))
 
                                                             <a class="btn btn-sm show-tooltip"
-                                                                href='{{ url("center/$value->id/edit") }}'
+                                                                href='{{ url("massara/$value->id/edit") }}'
                                                                 title="Edit"><i class="fa fa-edit"></i></a>
                                                         @endif
                                                     </div>
