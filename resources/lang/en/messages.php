@@ -420,5 +420,12 @@ return [
         'sliders' => 'Sliders',
         'create_slider' => 'Create Slider',
     ],
+
+    'banks'=>[
+        'banks' => 'Banks Accounts',
+        'create_bank' => 'Add New Bank Account',
+        'account_name' => 'Account Name',
+        'account_number' => 'Account Number',
+    ],
     
 ];

@@ -490,6 +490,22 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
+                        <li id="doctor">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-users"></i>
+                                <span>@lang('messages.banks.banks')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="bank_index"><a href="{{url('bank')}}">@lang('messages.banks.banks')</a></li>
+                                <li id="bank_create"><a href="{{url('bank/create')}}">@lang('messages.banks.create_bank')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
                         <li id="center">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-cogs"></i>
