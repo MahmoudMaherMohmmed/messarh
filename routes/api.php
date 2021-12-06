@@ -31,6 +31,7 @@ Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
 Route::post('contact_email', 'Api\AppController@contactMail');
 Route::get('sliders', 'Api\AppController@sliders');
 Route::get('search/{key}', 'Api\AppController@search');
+Route::get('banks', 'Api\BankController@index');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('profile', 'Api\ClientController@profile');
