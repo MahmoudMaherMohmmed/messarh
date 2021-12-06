@@ -89,12 +89,10 @@ class AppointmentController extends Controller
                 return true;
             }elseif($appointment->date == Carbon::now()->format('Y-m-d') && $appointment->from > Carbon::now()->format('H:i A') && $appointment->date == $day->format('Y-m-d')){
                 return true;
-            }else{
-                return false;
             }
         }
 
-        return true;
+        return false;
     }
 
     public function dayAppointments(Request $request){
