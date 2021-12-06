@@ -85,7 +85,7 @@ class AppointmentController extends Controller
 
     private function checkAppointmentDay($day, $appointments){
         foreach($appointments as $appointment){
-            if($appointment->date > Carbon::now()->format('Y-m-d') && $appointment->date == $day->format('Y-m-d')){
+            if($appointment->date >= Carbon::now()->format('Y-m-d') && $appointment->date == $day->format('Y-m-d')){
                 return true;
             }
         }
