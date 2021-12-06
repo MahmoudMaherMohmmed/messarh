@@ -111,7 +111,9 @@ class AppointmentController extends Controller
         $reservation->client_id = $request->user()->id;
         $reservation->fill($request->only('appointment_id', 'patient_name', 'phone_number', 'gender', 'age', 'description', 'payment_type'));
         if($reservation->save()){
+            
             $this->updateAppointmentStatus($request->appointment_id);
+
             return response()->json(['message' => 'appointment reserved successfully.'], 200);
         }else{
             return response()->json(['message' => 'an error occurred.'], 200);
