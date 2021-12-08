@@ -98,7 +98,6 @@ class AppointmentController extends Controller
 
         if(isset($request->date) && $request->date!=null){
             if($this->formatDate($request->date) == Carbon::now()->format('Y-m-d')){
-                dd(Carbon::now()->format('H:i A'));
                 $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('from', '>', Carbon::now()->format('H:i A'))->where('status', 0)->get(['id', 'from', 'to', 'status']);
             }else{
                 $appointments = Appointment::where('doctor_id', $request->doctor_id)->where('date', $this->formatDate($request->date))->where('status', 0)->get(['id', 'from', 'to', 'status']);
