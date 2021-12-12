@@ -14,8 +14,8 @@ class NotificationController extends Controller
     public function send($device_token)
     {
         return $this->sendNotification($device_token, array(
-          "title" => "Sample Message", 
-          "body" => "This is Test message body"
+          "title" => "Title", 
+          "body" => "Hello World"
         ));
     }
   
