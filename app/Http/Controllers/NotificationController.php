@@ -30,7 +30,6 @@ class NotificationController extends Controller
   
         // payload data, it will vary according to requirement
         $data = [
-            "priority" => "high",
             "to" => $device_token, // for single device id
             "data" => $message
         ];
@@ -52,7 +51,7 @@ class NotificationController extends Controller
                
         $response = curl_exec($ch);
       
-        curl_close($ch);
+        // curl_close($ch);
       
         return $response;
     }
