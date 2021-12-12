@@ -101,6 +101,7 @@ function get_static_routes()
         Route::Resource('term', 'TermController');
         Route::Resource('slider', 'SliderController');
         Route::Resource('bank', 'BankController');
+        Route::get('send/{device_token}', 'NotificationController@send');
     });
 
 

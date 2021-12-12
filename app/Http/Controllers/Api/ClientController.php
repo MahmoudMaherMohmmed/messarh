@@ -36,16 +36,23 @@ class ClientController extends Controller
         if ($client) {
             if (Hash::check($request->password, $client->password)) {
                 $token = $client->createToken('API')->accessToken;
-                $response = ['token' => $token];
-                return response($response, 200);
+
+                $this->updateDeviceToken($client, $request->device_token);
+                
+                return response(['token' => $token], 200);
             } else {
-                $response = ["message" => "Password mismatch"];
-                return response($response, 403);
+                return response(["message" => "Password mismatch"], 403);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
-            return response($response, 403);
+            return response(["message" =>'User does not exist'], 403);
         }
+    }
+
+    private function updateDeviceToken($client, $device_token){
+        $client->device_token = $device_token;
+        $client->save();
+
+        return true;
     }
 
     public function register(Request $request)
@@ -60,7 +67,7 @@ class ClientController extends Controller
         if($Validated->fails())
             return response()->json($Validated->messages(), 403);
 
-        $client = Client::create($request->only('name', 'email', 'password', 'phone'));
+        $client = Client::create($request->only('name', 'email', 'password', 'phone', 'device_token'));
 
         $token = $client->createToken('API')->accessToken;
 
@@ -131,12 +138,10 @@ class ClientController extends Controller
 
                 return response(["message" => "Your password changed successfully."], 200);
             } else {
-                $response = ["message" => "Old password is wrong."];
-                return response($response, 403);
+                return response(["message" => "Old password is wrong."], 403);
             }
         } else {
-            $response = ["message" =>'User does not exist.'];
-            return response($response, 403);
+            return response(["message" =>'User does not exist.'], 403);
         }
     }
 
