@@ -30,6 +30,7 @@ class NotificationController extends Controller
   
         // payload data, it will vary according to requirement
         $data = [
+            "priority" => "high",
             "to" => $device_token, // for single device id
             "data" => $message
         ];
