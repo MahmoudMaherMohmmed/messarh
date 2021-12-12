@@ -30,7 +30,7 @@ class NotificationController extends Controller
   
         // payload data, it will vary according to requirement
         $data = [
-            "to" => $device_token, // for single device id
+            "registration_ids" => $device_token, // for single device id
             "data" => $message
         ];
         $dataString = json_encode($data);
@@ -51,7 +51,7 @@ class NotificationController extends Controller
                
         $response = curl_exec($ch);
       
-        // curl_close($ch);
+        curl_close($ch);
       
         return $response;
     }
