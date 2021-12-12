@@ -26,7 +26,6 @@ class NotificationController extends Controller
      */
     public function sendNotification($device_token, $message)
     {
-        dd($device_token);
         $SERVER_API_KEY = 'AAAAlmTViqc:APA91bG811HA-kSO8zGXgcHFzYNDjzwo-NvU6AjS7p1oKyEW6EoZ14kEZYXAERPqvGscBYv2nZ1-gEnZIbqM7vxiCk49VswSlHpZaiR-EwdnkdRlnsi_HfxhoUWyxvA8H7wPqauPv7F9';
   
         // payload data, it will vary according to requirement
