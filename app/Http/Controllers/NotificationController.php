@@ -30,8 +30,8 @@ class NotificationController extends Controller
   
         // payload data, it will vary according to requirement
         $data = [
-            "registration_ids" => [$device_token], // for single device id
-            "data" => $message
+            "to" => $device_token, // for single device id
+            "notification" => $message
         ];
         $dataString = json_encode($data);
     
@@ -45,11 +45,14 @@ class NotificationController extends Controller
         curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
                
         $response = curl_exec($ch);
-      
+
+        curl_close ( $ch );
+
         return $response;
     }
 }
