@@ -35,6 +35,7 @@ class NotificationController extends Controller
         ];
         $dataString = json_encode($data);
     
+        dd($dataString);
         $headers = [
             'Authorization: key=' . $SERVER_API_KEY,
             'Content-Type: application/json',
