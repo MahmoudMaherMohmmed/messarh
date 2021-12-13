@@ -144,8 +144,8 @@ class AppController extends Controller
                         ->get(['doctors.id']);
 
             if(isset($doctors) && $doctors!=null && count($doctors)>0){
-                foreach($doctors as $doctor){
-                    $doctors = $this->formatDoctors(Doctor::find($doctor->id), $request->lang);
+                foreach($doctors as $doctor_id){
+                    $doctors = $this->formatDoctors(Doctor::find($doctor_id), $request->lang);
                 }
             }
         }
