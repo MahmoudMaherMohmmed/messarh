@@ -126,7 +126,7 @@ class AppController extends Controller
                         ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'specialties')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
-                        ->orWhere('specialties.name', 'Like', '%'.$key.'%')
+                        ->orWhere('specialties.title', 'Like', '%'.$key.'%')
                         ->groupBy(['specialties.id'])
                         ->get(['specialties.id']);
 
@@ -139,7 +139,7 @@ class AppController extends Controller
                         ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'doctors')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
-                        ->orWhere('specialties.name', 'Like', '%'.$key.'%')
+                        ->orWhere('doctors.name', 'Like', '%'.$key.'%')
                         ->get();
 
             if(isset($doctors) && $doctors!=null && count($doctors)>0){
