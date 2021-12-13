@@ -122,8 +122,8 @@ class AppController extends Controller
     public function search($key, Request $request){
         $doctors = [];
 
-        $specialties = Specialty::join('translatables', 'translatables.record_id','=', 'specialties.id')
-                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+        $specialties = Specialty::leftjoin('translatables', 'translatables.record_id','=', 'specialties.id')
+                        ->leftjoin('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'specialties')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
                         ->groupBy(['specialties.id'])
@@ -131,17 +131,17 @@ class AppController extends Controller
 
         if(isset($specialties) && $specialties!=null && count($specialties)>0){
             foreach($specialties as $specialty){
-                $doctors = $this->formateDoctors($specialty->doctors, $request->lang);
+                $doctors = $this->formatDoctors($specialty->doctors, $request->lang);
             }
         }else{
-            $doctors = Doctor::join('translatables', 'translatables.record_id','=', 'doctors.id')
-                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+            $doctors = Doctor::leftjoin('translatables', 'translatables.record_id','=', 'doctors.id')
+                        ->leftjoin('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'doctors')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
                         ->get();
 
             if(isset($doctors) && $doctors!=null && count($doctors)>0){
-                $doctors = $this->formateDoctors($doctors, $request->lang);
+                $doctors = $this->formatDoctors($doctors, $request->lang);
             }
         }
 
@@ -149,7 +149,7 @@ class AppController extends Controller
         return response()->json(['doctors' => $doctors]);
     }
 
-    private function formateDoctors($doctors, $lang){
+    private function formatDoctors($doctors, $lang){
         $doctors_array = [];
 
         foreach($doctors as $doctor){
