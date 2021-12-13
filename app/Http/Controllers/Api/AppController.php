@@ -143,8 +143,6 @@ class AppController extends Controller
                         ->groupBy(['doctors.id'])
                         ->get(['doctors.id']);
 
-                        dd($doctors);
-
             if(isset($doctors) && $doctors!=null && count($doctors)>0){
                 foreach($doctors as $doctor){
                     $doctors = $this->formatDoctors(Doctor::find($doctor->id), $request->lang);
