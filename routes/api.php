@@ -44,6 +44,8 @@ Route::middleware('auth:api')->group(function () {
     route::post('client/reservation', 'Api\AppointmentController@clientReservations');
     Route::post('messages', 'Api\MessageController@index');
     Route::post('message/create', 'Api\MessageController@create');
+    Route::get('notifications', 'Api\NotificationController@index');
+    Route::post('notification/delete', 'Api\NotificationController@delete');
 
     Route::post('logout', 'Api\ClientController@logout');
 });
