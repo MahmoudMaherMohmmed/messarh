@@ -175,7 +175,10 @@ class AppointmentController extends Controller
         $reservations = Reservation::where('client_id', $client_id)->get();
         if(isset($reservations) && $reservations!=null){
             foreach($reservations as $reservation){
-                array_push($reservations_array, $this->formatReservation($reservation, $request->lang));
+                if(isset($reservation->appointment) && $reservation->appointment!=null && isset($reservation->appointment->doctor) && $reservation->appointment->doctor!=null)
+                {
+                    array_push($reservations_array, $this->formatReservation($reservation, $request->lang));
+                }
             }
         }
 
