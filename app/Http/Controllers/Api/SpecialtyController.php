@@ -25,7 +25,7 @@ class SpecialtyController extends Controller
                 'description' => isset($lang) && $lang!=null ? $specialty->getTranslation('description', $lang) : $specialty->description,
                 'image' => isset($specialty->image) && $specialty->image!=null ? url($specialty->image) : '',
                 'doctors_count' => $specialty->doctors->count(),
-                'doctors' => $this->formateDoctors($specialty, $lang),
+                'doctors' => $this->formatDoctors($specialty, $lang),
             ]);
         }
 
