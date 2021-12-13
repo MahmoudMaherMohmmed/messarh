@@ -122,10 +122,11 @@ class AppController extends Controller
     public function search($key, Request $request){
         $doctors = [];
 
-        $specialties = Specialty::leftjoin('translatables', 'translatables.record_id','=', 'specialties.id')
-                        ->leftjoin('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+        $specialties = Specialty::join('translatables', 'translatables.record_id','=', 'specialties.id')
+                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'specialties')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
+                        ->orWhere('specialties.name', 'Like', '%'.$key.'%')
                         ->groupBy(['specialties.id'])
                         ->get(['specialties.id']);
 
@@ -134,10 +135,11 @@ class AppController extends Controller
                 $doctors = $this->formatDoctors($specialty->doctors, $request->lang);
             }
         }else{
-            $doctors = Doctor::leftjoin('translatables', 'translatables.record_id','=', 'doctors.id')
-                        ->leftjoin('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
+            $doctors = Doctor::join('translatables', 'translatables.record_id','=', 'doctors.id')
+                        ->join('tans_bodies', 'tans_bodies.translatable_id', '=', 'translatables.id')
                         ->where('translatables.table_name', 'doctors')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
+                        ->orWhere('specialties.name', 'Like', '%'.$key.'%')
                         ->get();
 
             if(isset($doctors) && $doctors!=null && count($doctors)>0){
