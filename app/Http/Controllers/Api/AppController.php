@@ -140,6 +140,7 @@ class AppController extends Controller
                         ->where('translatables.table_name', 'doctors')
                         ->where('tans_bodies.body', 'Like', '%'.$key.'%')
                         ->orWhere('doctors.name', 'Like', '%'.$key.'%')
+                        ->groupBy(['doctors.id'])
                         ->get();
 
                         dd($doctors);
