@@ -56,7 +56,7 @@
         <div class="fileupload fileupload-new" data-provides="fileupload">
             <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
                 @if($specialty)
-                    <img src="{{$specialty->image}}" alt="" />
+                    <img src="{{url($specialty->image)}}" alt="" />
                 @else
                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                 @endif
