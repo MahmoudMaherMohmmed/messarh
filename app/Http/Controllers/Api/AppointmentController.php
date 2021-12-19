@@ -132,7 +132,7 @@ class AppointmentController extends Controller
         if($reservation->save()){
 
             if($reservation->payment_type == 1){
-                return response()->json(['image' => $request['image']], 403);
+                return response()->json(['request' => $request], 403);
                 $this->saveBankTransfer($request, $reservation->id);
             }
 
