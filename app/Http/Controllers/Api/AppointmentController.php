@@ -112,8 +112,8 @@ class AppointmentController extends Controller
     }
 
     public function reserveAppointment(Request $request){
-        ini_set('post_max_size', '10M');
-        ini_set('upload_max_filesize', '10M');
+        ini_set('post_max_size', '64M');
+        ini_set('upload_max_filesize', '64M');
 
         $Validated = Validator::make($request->all(), [
             'appointment_id' => 'required',
@@ -123,7 +123,7 @@ class AppointmentController extends Controller
             'gender' => 'required',
             'description' => 'required',
             'payment_type' => 'required',
-            'image'      => 'max:10240'
+            'image'      => 'max:65536'
         ]);
 
         if($Validated->fails())
