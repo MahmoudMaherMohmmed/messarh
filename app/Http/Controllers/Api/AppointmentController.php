@@ -120,7 +120,7 @@ class AppointmentController extends Controller
             'gender' => 'required',
             'description' => 'required',
             'payment_type' => 'required',
-            'image'      => 'mimes:jpeg,jpg,png'
+            'image'      => ''
         ]);
 
         if($Validated->fails())
