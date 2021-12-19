@@ -161,8 +161,8 @@ class AppointmentController extends Controller
             $bank_transfer->bank_account_name = $bank->account_name;
             $bank_transfer->bank_account_number = $bank->account_number;
             $bank_transfer->IBAN = $bank->IBAN;
-            //$bank_transfer->image = $this->handleFile($request['image']);
-            $bank_transfer->image = 'gdfgdfgdfgdfgfgfgdf';
+            return response()->json(['image' => $request['image']], 403);
+            $bank_transfer->image = $this->handleFile($request['image']);
             $bank_transfer->save();
         }
 
