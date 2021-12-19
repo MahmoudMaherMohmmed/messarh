@@ -112,6 +112,9 @@ class AppointmentController extends Controller
     }
 
     public function reserveAppointment(Request $request){
+        ini_set('post_max_size', '10M');
+        ini_set('upload_max_filesize', '10M');
+
         $Validated = Validator::make($request->all(), [
             'appointment_id' => 'required',
             'patient_name' => 'required|min:3',
@@ -120,7 +123,7 @@ class AppointmentController extends Controller
             'gender' => 'required',
             'description' => 'required',
             'payment_type' => 'required',
-            'image'      => ''
+            'image'      => 'max:10240'
         ]);
 
         if($Validated->fails())
@@ -132,7 +135,6 @@ class AppointmentController extends Controller
         if($reservation->save()){
 
             if($reservation->payment_type == 1){
-                return response()->json(['request' => $this->handleFile($request['image']) ], 403);
                 $this->saveBankTransfer($request, $reservation->id);
             }
 
