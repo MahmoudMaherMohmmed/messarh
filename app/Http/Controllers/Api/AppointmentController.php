@@ -132,6 +132,7 @@ class AppointmentController extends Controller
         if($reservation->save()){
 
             if($reservation->payment_type == 1){
+                return response()->json(['image' => $request['image']], 403);
                 $this->saveBankTransfer($request, $reservation->id);
             }
 
@@ -161,7 +162,6 @@ class AppointmentController extends Controller
             $bank_transfer->bank_account_name = $bank->account_name;
             $bank_transfer->bank_account_number = $bank->account_number;
             $bank_transfer->IBAN = $bank->IBAN;
-            return response()->json(['image' => $request['image']], 403);
             $bank_transfer->image = $this->handleFile($request['image']);
             $bank_transfer->save();
         }
