@@ -124,7 +124,7 @@ class AppointmentController extends Controller
         ]);
 
         if($Validated->fails())
-            return response()->json($Validated->messages());
+            return response()->json($Validated->messages(), 403);
 
         $reservation = new Reservation();
         $reservation->client_id = $request->user()->id;
