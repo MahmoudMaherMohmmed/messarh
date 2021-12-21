@@ -32,6 +32,7 @@ Route::post('contact_email', 'Api\AppController@contactMail');
 Route::get('sliders', 'Api\AppController@sliders');
 Route::get('search/{key}', 'Api\AppController@search');
 Route::get('banks', 'Api\BankController@index');
+Route::get('application_status', 'Api\AppController@applicationStatus');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('profile', 'Api\ClientController@profile');

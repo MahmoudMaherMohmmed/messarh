@@ -9,6 +9,7 @@ use App\Models\Center;
 use App\Models\Slider;
 use App\Models\Specialty;
 use App\Models\Doctor;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mail;
@@ -16,6 +17,16 @@ use DB;
 
 class AppController extends Controller
 {
+
+    public function applicationStatus(){
+        $application_status = 1; //development mode
+        $status = Setting::where('key', 'development_mode')->first();
+        if(isset($status) && $status!=null){
+            $application_status = $status->value;
+        }
+
+        return response()->json(['application_status' => $application_status], 200);
+    }
 
     public function aboutMassara(Request $request){
         $massara = Massara::first();
