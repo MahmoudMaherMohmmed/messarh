@@ -62,12 +62,14 @@ class AppointmentController extends Controller
             foreach($dates as $date){
                 if(isset($times) && count($times)>0){
                     foreach($times as $time){
-                        $appointment = new Appointment();
-                        $appointment->doctor_id = $request->doctor_id;
-                        $appointment->date = $date->format('Y-m-d');
-                        $appointment->from = date('H:i A', strtotime($time));
-                        $appointment->to = date('H:i A', (strtotime($time) + 60*60) );
-                        $appointment->save();
+                        if($this->checkAppointment($request->doctor_id, $date->format('Y-m-d'), date('H:i A', strtotime($time)), date('H:i A', (strtotime($time) + 60*60))) == false){
+                            $appointment = new Appointment();
+                            $appointment->doctor_id = $request->doctor_id;
+                            $appointment->date = $date->format('Y-m-d');
+                            $appointment->from = date('H:i A', strtotime($time));
+                            $appointment->to = date('H:i A', (strtotime($time) + 60*60) );
+                            $appointment->save();
+                        }
                     }
                 }
             }
@@ -142,5 +144,15 @@ class AppointmentController extends Controller
         }
 
         return $times;
+    }
+
+    private function checkAppointment($doctor_id, $date, $from, $to){
+        $appointment= Appointment::where('doctor_id', $doctor_id)
+                    ->where('date', $date)
+                    ->where('from', $from)
+                    ->where('to', $to)
+                    ->first();
+
+        return isset($appointment)&&$appointment!=null ? true : false;
     }
 }

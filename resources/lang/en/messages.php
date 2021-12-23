@@ -367,6 +367,8 @@ return [
         'time' => 'Time',
         'start_from' => 'From',
         'end_at' => 'To',
+        'available' => 'Available',
+        'reserved' => 'Reserved',
     ],
 
     'reservations'=>[

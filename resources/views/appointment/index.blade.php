@@ -37,22 +37,24 @@
                             @foreach ($appointments as $appointment)
                             <tr class="table-flag-blue">
                                 <th><input type="checkbox" name="selected_rows[]" class="select_all_template" value="{{ $appointment->id }}"></th>
-                                <td>{{ $appointment->doctor->name }}</td>
+                                <td>{{ $appointment->doctor->getTranslation('name', Session::get('applocale')) }}</td>
                                 <td>{{ $appointment->date }}</td>
                                 <td>{{ $appointment->from }}</td>
                                 <td>{{ $appointment->to }}</td>
-                                <td>{{ $appointment->status==0 ? 'Available' : 'Reserved'}}</td>
+                                <td>{{ $appointment->status==0 ? trans('messages.appointments.available') : trans('messages.appointments.reserved')}}</td>
                                 <td class="visible-xs visible-sm visible-md visible-lg">
                                     <div class="btn-group">
-                                        @if (get_action_icons('appointment/{id}/delete', 'get'))
-                                        <form action="{{ route('appointment.destroy', $appointment->id) }}"
-                                            method="POST" style="display: initial;">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                style="height: 28px;"><i
-                                                    class="fa fa-trash"></i></button>
-                                        </form>
+                                        @if($appointment->status==0)
+                                            @if (get_action_icons('appointment/{id}/delete', 'get'))
+                                            <form action="{{ route('appointment.destroy', $appointment->id) }}"
+                                                method="POST" style="display: initial;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                    style="height: 28px;"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
+                                            @endif
                                         @endif
                                     </div>
                                 </td>

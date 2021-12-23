@@ -361,6 +361,8 @@ return [
         'time' => 'الوقت',
         'start_from' => 'من',
         'end_at' => 'الى',
+        'available' => 'متاح',
+        'reserved' => 'تم حجزه',
     ],
 
     'reservations'=>[

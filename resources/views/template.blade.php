@@ -764,6 +764,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     "singleDatePicker": true,
                     "showDropdowns": true,
                     "autoUpdateInput": false,
+                    "minDate": new Date(),
                      dateFormat: 'yy-mm-dd'
                 });
 

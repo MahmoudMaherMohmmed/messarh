@@ -36,6 +36,8 @@
                                             <th style="width:18px"><input type="checkbox" id="check_all" data-table="{{ $table_name }}"></th>
                                             <th>id</th>
                                             <th>@lang('messages.name')</th>
+                                            <th>@lang('messages.doctors.specialty')</th>
+                                            <th>@lang('messages.doctors.medical_examination_price')</th>
                                             <th>@lang('messages.Image.Image')</th>
                                             <th>@lang('messages.action')</th>
                                         </tr>
@@ -52,7 +54,8 @@
                                                             {{ $value->getTranslation('name', $language->short_code) }}</li>
                                                     @endforeach
                                                 </td>
-
+                                                <td>{{ $value->specialty->getTranslation('title', Session::get('applocale')) }}</td>
+                                                <td>{{ $value->medical_examination_price }}</td>
                                                 <td>
                                                     @if ($value->image)
                                                         <img class=" img-circle" width="100px" height="100px"
