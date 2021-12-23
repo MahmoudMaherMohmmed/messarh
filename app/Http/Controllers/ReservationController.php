@@ -109,8 +109,8 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        $doctor = Doctor::findOrFail($id);
-        return view('doctor.index', compact('doctor'));
+        $reservation = Reservation::findOrFail($id);
+        return view('reservation.show', compact('reservation'));
     }
 
     /**

@@ -386,6 +386,7 @@ return [
         'cash' => 'Cash',
         'bank_transfer' => 'Bank Transfer',
         'update_reservation' => 'Update Reservation',
+        'doctor' => 'Doctor',
     ],
 
     'clients'=>[

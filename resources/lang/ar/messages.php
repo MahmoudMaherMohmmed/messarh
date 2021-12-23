@@ -380,6 +380,7 @@ return [
         'cash' => 'كاش',
         'bank_transfer' => 'حوالة بنكية',
         'update_reservation' => 'تعديل الحجز',
+        'doctor' => 'الطبيب المعالج',
     ],
 
     'clients'=>[

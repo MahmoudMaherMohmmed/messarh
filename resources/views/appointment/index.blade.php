@@ -44,7 +44,10 @@
                                 <td>{{ $appointment->status==0 ? trans('messages.appointments.available') : trans('messages.appointments.reserved')}}</td>
                                 <td class="visible-xs visible-sm visible-md visible-lg">
                                     <div class="btn-group">
-                                        @if($appointment->status==0)
+                                        @if($appointment->status==1)
+                                            @php $reservation= $appointment->reservations->first(); @endphp
+                                            <a class="btn btn-sm btn-success show-tooltip" href='{{ url("reservation/$reservation->id") }}' title="Show"><i class="fa fa-eye"></i></a>
+                                        @else
                                             @if (get_action_icons('appointment/{id}/delete', 'get'))
                                             <form action="{{ route('appointment.destroy', $appointment->id) }}"
                                                 method="POST" style="display: initial;">
