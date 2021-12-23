@@ -58,7 +58,9 @@
                                                 <td>{{$value->appointment->from}}</td>
                                                 <td>
                                                     @if($value->payment_type == 1)
-                                                        @lang('messages.reservations.bank_transfer')
+                                                    <a class="show-tooltip"
+                                                            href='{{ url("bank_transfer/$value->id") }}'
+                                                            title="Show">@lang('messages.reservations.bank_transfer')</a>
                                                     @else
                                                         @lang('messages.reservations.cash')
                                                     @endif

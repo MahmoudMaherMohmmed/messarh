@@ -379,6 +379,7 @@ return [
         'payment_method' => 'طريقة الدفع',
         'cash' => 'كاش',
         'bank_transfer' => 'حوالة بنكية',
+        'update_reservation' => 'تعديل الحجز',
     ],
 
     'clients'=>[
@@ -428,5 +429,15 @@ return [
         'create_bank' => 'اضافة حساب بنكى جديد',
         'account_name' => 'اسم صاحب الحساب',
         'account_number' => 'رقم الحساب',
+    ],
+
+    'bank_transfers'=>[
+        'bank_transfers' => 'التحويلات البنكية',
+        'bank_transfer_details' => 'تفاصيل التحويل البنكى',
+        'bank_name' => 'اسم البنك',
+        'bank_account_name' => 'اسم صاحب الحساب',
+        'bank_account_number' => 'رقم الحساب',
+        'IBAN' => 'IBAN',
+        'image' => 'صورة التحويل',
     ],
 ];
