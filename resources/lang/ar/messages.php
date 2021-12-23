@@ -151,6 +151,9 @@ return [
         'started' => 'بدأ',
         'finished' => 'أنتهى',
         'status' => 'الحاله',
+        'under_review' => 'تحت المراجعه',
+        'approved' => 'تم الموافقه عليه',
+        'rejected' => 'تم رفضه',
     ],
     'country' => [
         'country' => 'البلد',
@@ -368,10 +371,14 @@ return [
     'reservations'=>[
         'reservations' => 'الحجوزات',
         'create_reservation' => 'حجز موعد',
+        'client_name' => 'اسم العميل',
         'patient_name' => 'أسم المريض',
         'age' => 'السن',
         'phone_number' => 'رقم الهاتف',
         'gender' => 'الجنس',
+        'payment_method' => 'طريقة الدفع',
+        'cash' => 'كاش',
+        'bank_transfer' => 'حوالة بنكية',
     ],
 
     'clients'=>[

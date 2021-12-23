@@ -386,7 +386,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="specialty_index"><a href="{{url('specialty')}}">@lang('messages.specialties.specialties')</a></li>
                                 <li id="specialty_create"><a href="{{url('specialty/create')}}">@lang('messages.specialties.create_specialty')</a></li>
@@ -402,7 +401,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="doctor_index"><a href="{{url('doctor')}}">@lang('messages.doctors.doctors')</a></li>
                                 <li id="doctor_create"><a href="{{url('doctor/create')}}">@lang('messages.doctors.create_doctor')</a></li>
@@ -418,7 +416,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="appointment_index"><a href="{{url('appointment')}}">@lang('messages.appointments.appointments')</a></li>
                                 <li id="appointment_create"><a href="{{url('appointment/create')}}">@lang('messages.appointments.create_appointment')</a></li>
@@ -427,17 +424,31 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
-                        <li id="appointment">
+                        <li id="reservation">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-tasks"></i>
                                 <span>@lang('messages.reservations.reservations')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="reservation_index"><a href="{{url('reservation')}}">@lang('messages.reservations.reservations')</a></li>
-                                <li id="reservation_create"><a href="{{url('reservation/create')}}">@lang('messages.reservations.create_reservation')</a></li>
+                                <!-- <li id="reservation_create"><a href="{{url('reservation/create')}}">@lang('messages.reservations.create_reservation')</a></li> -->
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="bank">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-university"></i>
+                                <span>@lang('messages.banks.banks')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li id="bank_index"><a href="{{url('bank')}}">@lang('messages.banks.banks')</a></li>
+                                <li id="bank_create"><a href="{{url('bank/create')}}">@lang('messages.banks.create_bank')</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -474,33 +485,16 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
-                        <li id="doctor">
+                        <li id="slider">
                             <a href="#" class="dropdown-toggle">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-file-text"></i>
                                 <span>@lang('messages.sliders.sliders')</span>
                                 <b class="arrow fa fa-angle-right"></b>
                             </a>
 
-                            <!-- BEGIN Submenu -->
                             <ul class="submenu">
                                 <li id="slider_index"><a href="{{url('slider')}}">@lang('messages.sliders.sliders')</a></li>
                                 <li id="slider_create"><a href="{{url('slider/create')}}">@lang('messages.sliders.create_slider')</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav nav-list">
-                        <li id="doctor">
-                            <a href="#" class="dropdown-toggle">
-                                <i class="fa fa-users"></i>
-                                <span>@lang('messages.banks.banks')</span>
-                                <b class="arrow fa fa-angle-right"></b>
-                            </a>
-
-                            <!-- BEGIN Submenu -->
-                            <ul class="submenu">
-                                <li id="bank_index"><a href="{{url('bank')}}">@lang('messages.banks.banks')</a></li>
-                                <li id="bank_create"><a href="{{url('bank/create')}}">@lang('messages.banks.create_bank')</a></li>
                             </ul>
                         </li>
                     </ul>

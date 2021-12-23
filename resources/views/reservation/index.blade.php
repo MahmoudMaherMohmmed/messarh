@@ -34,10 +34,14 @@
                                     <thead>
                                         <tr>
                                             <th style="width:18px"><input type="checkbox" id="check_all" data-table="{{ $table_name }}"></th>
-                                            <th>id</th>
-                                            <th>@lang('messages.name')</th>
+                                            <th>@lang('messages.reservations.client_name')</th>
+                                            <th>@lang('messages.reservations.patient_name')</th>
+                                            <th>@lang('messages.reservations.phone_number')</th>
+                                            <th>@lang('messages.reservations.age')</th>
                                             <th>@lang('messages.appointments.date')</th>
                                             <th>@lang('messages.appointments.time')</th>
+                                            <th>@lang('messages.reservations.payment_method')</th>
+                                            <th>@lang('messages.status.status')</th>
                                             <th>@lang('messages.action')</th>
                                         </tr>
                                     </thead>
@@ -46,14 +50,31 @@
                                             <tr>
                                                 <td><input type="checkbox" name="selected_rows[]" value="{{ $value->id }}" class="roles select_all_template">
                                                 </td>
-                                                <td>{{ $value->id }}</td>
-                                                <td> {{ $value->client->name }} </td>
-                                                <td> {{ $value->appointment->date }} </td>
-                                                <td> {{ $value->appointment->from }} </td>
+                                                <td>{{ $value->client->name }}</td>
+                                                <td>{{$value->patient_name}}</td>
+                                                <td>{{$value->phone_number}}</td>
+                                                <td>{{$value->age}}</td>
+                                                <td>{{$value->appointment->date}}</td>
+                                                <td>{{$value->appointment->from}}</td>
+                                                <td>
+                                                    @if($value->payment_type == 1)
+                                                        @lang('messages.reservations.bank_transfer')
+                                                    @else
+                                                        @lang('messages.reservations.cash')
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($value->status == 1)
+                                                        @lang('messages.status.under_review')
+                                                    @elseif($value->status == 2)
+                                                        @lang('messages.status.approved')
+                                                    @else
+                                                        @lang('messages.status.rejected')
+                                                    @endif
+                                                </td>
                                                 <td class="visible-md visible-xs visible-sm visible-lg">
                                                     <div class="btn-group">
                                                         @if (get_action_icons('reservation/{id}/edit', 'get'))
-
                                                             <a class="btn btn-sm show-tooltip"
                                                                 href='{{ url("reservation/$value->id/edit") }}'
                                                                 title="Edit"><i class="fa fa-edit"></i></a>
