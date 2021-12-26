@@ -81,15 +81,17 @@
                                                                 href='{{ url("reservation/$value->id/edit") }}'
                                                                 title="Edit"><i class="fa fa-edit"></i></a>
                                                         @endif
-                                                        @if (get_action_icons('reservation/{id}/delete', 'get'))
-                                                            <form action="{{ route('reservation.destroy', $value->id) }}"
-                                                                method="POST" style="display: initial;">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                                    style="height: 28px;"><i
-                                                                        class="fa fa-trash"></i></button>
-                                                            </form>
+                                                        @if($value->status != 2)
+                                                            @if (get_action_icons('reservation/{id}/delete', 'get'))
+                                                                <form action="{{ route('reservation.destroy', $value->id) }}"
+                                                                    method="POST" style="display: initial;">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-danger"
+                                                                        style="height: 28px;"><i
+                                                                            class="fa fa-trash"></i></button>
+                                                                </form>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </td>

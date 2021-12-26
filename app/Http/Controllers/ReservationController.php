@@ -164,9 +164,26 @@ class ReservationController extends Controller
     public function destroy($id)
     {
         $reservation = Reservation::find($id);
+        $this->updateAppointmentStatus($reservation);
         $reservation->delete();
 
         return redirect()->back();
+    }
+
+    private function updateAppointmentStatus($reservation)
+    {
+        if($reservation->payment_type==1 && $reservation->status!=2){
+            $bank_transfer = $reservation->bankTransfer;
+            if(isset($bank_transfer) && $bank_transfer!=null){
+                $bank_transfer->delete();
+            }
+        }
+
+        $appointment = $reservation->appointment;
+        $appointment->status = 0;
+        $appointment->save();
+
+        return true;
     }
 
 }
