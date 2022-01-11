@@ -7,6 +7,7 @@ use App\Models\Massara;
 use App\Models\Term;
 use App\Models\Center;
 use App\Models\Slider;
+use App\Models\HomeSlider;
 use App\Models\Specialty;
 use App\Models\Doctor;
 use App\Models\Setting;
@@ -128,6 +129,27 @@ class AppController extends Controller
         }
 
         return $sliders_array;
+    }
+
+    public function homeSliders(Request $request)
+    {
+        $home_sliders = $this->formateHomeSliders(HomeSlider::get(), $request->lang);
+
+        return response()->json(['home_sliders' => $home_sliders]);
+    }
+
+    private function formateHomeSliders($home_sliders, $lang){
+        $home_sliders_array = [];
+
+        foreach($home_sliders as $home_slider){
+            array_push($home_sliders_array, [
+                'id' => $home_slider->id,
+                'title' => isset($lang) && $lang!=null ? $home_slider->getTranslation('title', $lang) : $home_slider->title,
+                'image' => url($home_slider->image)
+            ]);
+        }
+
+        return $home_sliders_array;
     }
 
     public function search($key, Request $request){

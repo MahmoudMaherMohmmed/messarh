@@ -30,6 +30,7 @@ Route::get('center', 'Api\AppController@center');
 Route::get('terms_and_conditions', 'Api\AppController@TermsAndConditions');
 Route::post('contact_email', 'Api\AppController@contactMail');
 Route::get('sliders', 'Api\AppController@sliders');
+Route::get('home_sliders', 'Api\AppController@homeSliders');
 Route::get('search/{key}', 'Api\AppController@search');
 Route::get('banks', 'Api\BankController@index');
 Route::get('application_status', 'Api\AppController@applicationStatus');
