@@ -100,6 +100,7 @@ function get_static_routes()
         Route::Resource('massara', 'MassaraController');
         Route::Resource('term', 'TermController');
         Route::Resource('slider', 'SliderController');
+        Route::Resource('home_slider', 'HomeSliderController');
         Route::Resource('bank', 'BankController');
         Route::Resource('bank_transfer', 'BankTransferController');
         Route::get('send_notification/{device_token}', 'NotificationController@send');

@@ -514,6 +514,21 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
+                        <li id="home_slider">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-file-text"></i>
+                                <span>@lang('messages.home_sliders.home_sliders')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li id="home_slider_index"><a href="{{url('home_slider')}}">@lang('messages.home_sliders.home_sliders')</a></li>
+                                <li id="home_slider_create"><a href="{{url('home_slider/create')}}">@lang('messages.home_sliders.create_home_slider')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
                         <li id="center">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-cogs"></i>

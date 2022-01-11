@@ -425,6 +425,11 @@ return [
         'create_slider' => 'انشاء صفحة تعريفيه',
     ],
 
+    'home_sliders'=>[
+        'home_sliders' => 'صور الصفحة الرئيسية',
+        'create_home_slider' => 'اضافة صورة للصفحة الرئيسية',
+    ],
+
     'banks'=>[
         'banks' => 'الحسابات البنكية',
         'create_bank' => 'اضافة حساب بنكى جديد',

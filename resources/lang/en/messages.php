@@ -432,6 +432,11 @@ return [
         'create_slider' => 'Create Slider',
     ],
 
+    'home_sliders'=>[
+        'home_sliders' => 'Home Sliders',
+        'create_home_slider' => 'Create Home Slider',
+    ],
+
     'banks'=>[
         'banks' => 'Banks Accounts',
         'create_bank' => 'Add New Bank Account',
