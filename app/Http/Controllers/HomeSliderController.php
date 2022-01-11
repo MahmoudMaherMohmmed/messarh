@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Repository\LanguageRepository;
 use App\Http\Services\UploaderService;
 use Illuminate\Http\UploadedFile;
+use Validator;
 
 class HomeSliderController extends Controller
 {
@@ -84,7 +85,10 @@ class HomeSliderController extends Controller
         }
 
         foreach ($request->title as $key => $value) {
-            $home_slider->setTranslation('title', $key, $value);
+            if($value!=null)
+            {
+                $home_slider->setTranslation('title', $key, $value);
+            }
         }
         
         $home_slider->save();
@@ -154,7 +158,10 @@ class HomeSliderController extends Controller
         }
 
         foreach ($request->title as $key => $value) {
-            $home_slider->setTranslation('title', $key, $value);
+            if($value!=null)
+            {
+                $home_slider->setTranslation('title', $key, $value);
+            }
         }
        
         $home_slider->save();
