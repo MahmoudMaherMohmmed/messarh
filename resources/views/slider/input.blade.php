@@ -37,12 +37,8 @@
                 <div class="tab-pane fade in {{ $i++ ? '' : 'active' }}"
                     id="description{{ $language->short_code }}">
                     <textarea class="form-control col-md-12"
-                        name="description[{{ $language->short_code }}]" rows="6">
-                        @if ($slider) 
-                            {{ $slider->getTranslation('description', $language->short_code) }}
-                        @else
-                            {{ old('description.' . $language->short_code) }}
-                        @endif
+                        name="description[{{ $language->short_code }}]" 
+                        rows="6">{{isset($slider) && $slider!=null ? $slider->getTranslation('description', $language->short_code) : old('description.' . $language->short_code)}}
                     </textarea>
                 </div>
             @endforeach
