@@ -316,9 +316,11 @@
         current_client_id = null;
 
         $(document).ready(function() {
-            client_id = "{{$clients[0]['client_id']}}";
+            @if(isset($clients) && count($clients)>0)
+                client_id = "{{$clients[0]['client_id']}}";
 
-            clientMessages(client_id);
+                clientMessages(client_id);
+            @endif
         });
 
         $('#message_form').on('submit',function(e){
