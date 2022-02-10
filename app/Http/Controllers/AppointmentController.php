@@ -132,6 +132,20 @@ class AppointmentController extends Controller
         return redirect()->back();
     }
 
+    public function deleteSelected(Request $request)
+    {
+        if(isset($request->selected_rows) && $request->selected_rows!=null){
+            foreach($request->selected_rows as $id){
+                $appointment = Appointment::where('id', $id)->where('status', 0)->first();
+                if(isset($appointment) && $appointment!=null){
+                    $appointment->delete();
+                }
+            }
+        }
+
+        return true;
+    }
+
     private function getHoursBetweenPeriod($from, $to){
         $times = [];
         $tStart = strtotime($from);

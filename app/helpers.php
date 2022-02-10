@@ -93,6 +93,7 @@ function get_static_routes()
         Route::Resource('doctor', 'DoctorController');
         Route::Resource('client', 'ClientController');
         Route::Resource('appointment', 'AppointmentController');
+        Route::post('appointment/delete_selected', 'AppointmentController@deleteSelected');
         Route::Resource('reservation', 'ReservationController');
         Route::Resource('center', 'CenterController');
         Route::Resource('message', 'MessageController');

@@ -12,8 +12,9 @@
             <div class="box-content">
                 <div class="btn-toolbar pull-right">
                     <div class="btn-group">
+                        <a class="btn btn-danger show-tooltip" data-original-title="Delete Selected record" id="delete-selected" style="margin-left: 10px;">حذف المحددة <i class="fa fa-trash"></i></a>
                         @if (get_action_icons('appointment/create', 'get'))
-                        <a class="btn btn-circle show-tooltip" title="" href="{{ url('appointment/create') }}"
+                        <a class="btn show-tooltip" title="" href="{{ url('appointment/create') }}"
                             data-original-title="Add new record"><i class="fa fa-plus"></i></a>
                         @endif
                         <?php $table_name = 'appointments'; ?>
@@ -75,5 +76,32 @@
 <script>
     $('#appointment').addClass('active');
 	$('#appointment_index').addClass('active');
+</script>
+
+<script>
+  $("#delete-selected").click(function(event){
+    event.preventDefault();
+    var _token   = $('meta[name="csrf-token"]').attr('content');
+
+    var confirmation = confirm('Are you sure you want to delete this ?');
+    if (confirmation) {
+        $.ajax({
+            url: "{{url('appointment/delete_selected')}}",
+            type:"POST",
+            data:{
+                selected_rows:table_ids_array,
+                _token: _token
+            },
+            success:function(response){
+            if(response) {
+                location.reload();
+            }
+            },
+            error: function(error) {
+            console.log(error);
+            }
+        });
+    }
+  });
 </script>
 @stop

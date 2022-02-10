@@ -715,8 +715,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         table_ids_array.splice(index, 1);
                     }
                 }
-
-                console.log(table_ids_array);
             });
         </script>
 {{-- End Multi Deletr Check Box --}}
