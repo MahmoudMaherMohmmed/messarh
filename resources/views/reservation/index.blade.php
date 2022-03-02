@@ -47,55 +47,57 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($reservations as $value)
-                                            <tr>
-                                                <td><input type="checkbox" name="selected_rows[]" value="{{ $value->id }}" class="roles select_all_template">
-                                                </td>
-                                                <td>{{ $value->client->name }}</td>
-                                                <td>{{$value->patient_name}}</td>
-                                                <td>{{$value->phone_number}}</td>
-                                                <td>{{$value->age}}</td>
-                                                <td>{{$value->appointment->date}}</td>
-                                                <td>{{$value->appointment->from}}</td>
-                                                <td>
-                                                    @if($value->payment_type == 1)
-                                                    <a class="show-tooltip"
-                                                            href='{{ url("bank_transfer/$value->id") }}'
-                                                            title="Show">@lang('messages.reservations.bank_transfer')</a>
-                                                    @else
-                                                        @lang('messages.reservations.cash')
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($value->status == 1)
-                                                        @lang('messages.status.under_review')
-                                                    @elseif($value->status == 2)
-                                                        @lang('messages.status.approved')
-                                                    @else
-                                                        @lang('messages.status.rejected')
-                                                    @endif
-                                                </td>
-                                                <td class="visible-md visible-xs visible-sm visible-lg">
-                                                    <div class="btn-group">
-                                                        @if (get_action_icons('reservation/{id}/edit', 'get'))
-                                                            <a class="btn btn-sm show-tooltip"
-                                                                href='{{ url("reservation/$value->id/edit") }}'
-                                                                title="Edit"><i class="fa fa-edit"></i></a>
+                                            @if($value->appointment != null)
+                                                <tr>
+                                                    <td><input type="checkbox" name="selected_rows[]" value="{{ $value->id }}" class="roles select_all_template">
+                                                    </td>
+                                                    <td>{{ $value->client->name }}</td>
+                                                    <td>{{$value->patient_name}}</td>
+                                                    <td>{{$value->phone_number}}</td>
+                                                    <td>{{$value->age}}</td>
+                                                    <td>{{$value->appointment->date}}</td>
+                                                    <td>{{$value->appointment->from}}</td>
+                                                    <td>
+                                                        @if($value->payment_type == 1)
+                                                        <a class="show-tooltip"
+                                                                href='{{ url("bank_transfer/$value->id") }}'
+                                                                title="Show">@lang('messages.reservations.bank_transfer')</a>
+                                                        @else
+                                                            @lang('messages.reservations.cash')
                                                         @endif
-                                                        @if($value->status != 2)
-                                                            @if (get_action_icons('reservation/{id}/delete', 'get'))
-                                                                <form action="{{ route('reservation.destroy', $value->id) }}"
-                                                                    method="POST" style="display: initial;">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                                        style="height: 28px;"><i
-                                                                            class="fa fa-trash"></i></button>
-                                                                </form>
+                                                    </td>
+                                                    <td>
+                                                        @if($value->status == 1)
+                                                            @lang('messages.status.under_review')
+                                                        @elseif($value->status == 2)
+                                                            @lang('messages.status.approved')
+                                                        @else
+                                                            @lang('messages.status.rejected')
+                                                        @endif
+                                                    </td>
+                                                    <td class="visible-md visible-xs visible-sm visible-lg">
+                                                        <div class="btn-group">
+                                                            @if (get_action_icons('reservation/{id}/edit', 'get'))
+                                                                <a class="btn btn-sm show-tooltip"
+                                                                    href='{{ url("reservation/$value->id/edit") }}'
+                                                                    title="Edit"><i class="fa fa-edit"></i></a>
                                                             @endif
-                                                        @endif
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                            @if($value->status != 2)
+                                                                @if (get_action_icons('reservation/{id}/delete', 'get'))
+                                                                    <form action="{{ route('reservation.destroy', $value->id) }}"
+                                                                        method="POST" style="display: initial;">
+                                                                        @method('DELETE')
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                                            style="height: 28px;"><i
+                                                                                class="fa fa-trash"></i></button>
+                                                                    </form>
+                                                                @endif
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
